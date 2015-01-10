@@ -1,0 +1,23 @@
+{
+  "name": "CodeWarrior2015.Frontend",
+  "version": "0.0.1",
+  "description": "Frontend HTML, CSS & JS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sheikh-imrul/CodeWarrior2015.Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "grunt": "^0.4.5",
+    "jasmine-core": "^2.1.3",
+    "jsx-loader": "^0.12.2",
+    "karma": "^0.12.28",
+    "karma-webpack": "^1.3.1",
+    "sass-loader": "^0.3.1",
+    "webpack": "^1.4.14",
+    "webpack-dev-server": "^1.7.0"
+  }
+}
