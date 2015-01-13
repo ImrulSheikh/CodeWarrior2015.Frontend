@@ -32,12 +32,14 @@ module.exports = function(grunt) {
          * Compile TypeScript files
          */
         ts: {
-            dev : {
+            default : {
                 src: ["<%= app_dir %>/**/*.ts"],
                 //outDir: "<%= app_dir_dist %>",
                 out: '<%= app_dir_dist %>/out.js',
-                watch:'app',
                 reference: "<%= app_dir %>/reference.ts"
+            },
+            dev : {
+                watch:'app'
             }
         },
 
@@ -80,7 +82,10 @@ module.exports = function(grunt) {
             }
         },
 
-
+        /*
+         * Watch for changes to scss files and automatically update dist/css files
+         * https://github.com/gruntjs/grunt-contrib-watch
+         */
         watch: {
             css: {
                 files: '**/*.scss',
@@ -92,7 +97,10 @@ module.exports = function(grunt) {
             }
         },
 
-
+        /**
+         * Start a webserver to work on the styleguide and sample app
+         * https://github.com/gruntjs/grunt-contrib-connect
+         */
         connect: {
             server: {
                 options: {
@@ -111,6 +119,10 @@ module.exports = function(grunt) {
 
     // This command registers the default task which will install bower packages into assets/lib
     grunt.registerTask("default", ["bower:install","sass" ]);
+
+    grunt.registerTask("init", ["default", "ts:default" ]);
+    grunt.registerTask("server", ["connect:server","init"]);
+
     grunt.registerTask("dev", ["default","ts:dev", "watch"]);
-    grunt.registerTask("server", ["connect:server","dev"]);
+
 };

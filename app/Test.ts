@@ -13,7 +13,7 @@ module Test{
         }
 
         public H3() {
-            alert("h3");
+            alert("hiiii...3");
 
         }
     }
