@@ -32,9 +32,12 @@ module.exports = function(grunt) {
          * Compile TypeScript files
          */
         ts: {
-            default : {
-                src: ["**/*.ts", "!node_modules/**/*.ts"],
-                outDir: "<%= app_dir_dist %>"
+            dev : {
+                src: ["<%= app_dir %>/**/*.ts"],
+                //outDir: "<%= app_dir_dist %>",
+                out: '<%= app_dir_dist %>/out.js',
+                watch:'app',
+                reference: "<%= app_dir %>/reference.ts"
             }
         },
 
@@ -75,6 +78,31 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+
+
+        watch: {
+            css: {
+                files: '**/*.scss',
+                tasks: ['sass']
+            },
+            scripts: {
+                files: ['**/*.ts'],
+                tasks: ['ts']
+            }
+        },
+
+
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    hostname: 'localhost',
+                    base: '.',
+                    keepalive:true,
+                    livereload:true
+                }
+            }
         }
     });
 
@@ -82,5 +110,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // This command registers the default task which will install bower packages into assets/lib
-    grunt.registerTask("default", ["bower:install","sass" ,"ts:default"]);
+    grunt.registerTask("default", ["bower:install","sass" ]);
+    grunt.registerTask("dev", ["default","ts:dev", "watch"]);
+    grunt.registerTask("server", ["connect:server","dev"]);
 };
