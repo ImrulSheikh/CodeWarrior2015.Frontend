@@ -1,4 +1,15 @@
+/// <reference path="../typings/tsd.d.ts" />
+
+/// <reference path="services/services.ts" />
+/// <reference path="directives/directives.ts" />
+
 //grunt-start
-/// <reference path="Test.ts" />
-/// <reference path="Test2.ts" />
+/// <reference path="directives/testme.html.ts" />
+/// <reference path="controllers/MainController.ts" />
+/// <reference path="controllers/TestController.ts" />
+/// <reference path="directives/testme.ts" />
+/// <reference path="services/LogService.ts" />
 //grunt-end
+
+/// <reference path="controllers/controllers.ts" />
+/// <reference path="main.ts" />
