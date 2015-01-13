@@ -1,6 +1,7 @@
 #
 
-=== WORKING WITH CodeWarrior2015.Frontend ===
+=== CodeWarrior2015 Frontend ===
+--- Simple & Interactive UI using HTML, CSS & JavaScript---
 =========================
 
 Setup Tools

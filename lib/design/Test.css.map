@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "Test.css",
+	"sources": [
+		"../../design/Test.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAAA,AACE,AAAW",
+	"names": []
+}
