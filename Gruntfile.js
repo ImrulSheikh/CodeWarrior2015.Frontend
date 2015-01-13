@@ -111,7 +111,32 @@ module.exports = function(grunt) {
                     livereload:true
                 }
             }
+        },
+
+        concat: {
+            css: {
+                src:  '<%= library_dir %>/eshopper/css/*.css',
+                dest: '<%= library_dir %>/eshopper/css/eshopper.css'
+            }
+        },
+
+        /**
+         * Minify CSS
+         * https://github.com/gruntjs/grunt-contrib-cssmin
+         */
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= library_dir %>/eshopper/css/',
+                    src: ['eshopper.css'],
+                    dest: '<%= library_dir %>/eshopper/css',
+                    ext: '.min.css'
+                }]
+            }
         }
+
+
     });
 
     // Let *load-grunt-tasks* require everything. Note: Only loads tasks starting with "grunt-"
@@ -124,5 +149,9 @@ module.exports = function(grunt) {
     grunt.registerTask("server", ["connect:server","init"]);
 
     grunt.registerTask("dev", ["default","ts:dev", "watch"]);
+
+    //Different Tasks
+    grunt.registerTask("eshopper-css", ["concat","cssmin"]);
+
 
 };
