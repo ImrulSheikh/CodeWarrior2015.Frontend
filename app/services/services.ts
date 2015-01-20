@@ -1,3 +1,3 @@
 /// <reference path="../reference.ts" />
 
-var services = angular.module('services',[]);
+var services = angular.module('codeWarriorApp.servics',[]);
