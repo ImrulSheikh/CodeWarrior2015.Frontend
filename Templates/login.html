@@ -28,7 +28,8 @@
                         <h2>New User Signup!</h2>
                         <label class="text-danger" ng-bind="signupMessage"></label>
                         <form >
-                            <input type="text" ng-model="signupModel.name" placeholder="Name" />
+                            <input type="text" ng-model="signupModel.userName" placeholder="Name" />
+                            <input type="text" ng-model="signupModel.fullName" placeholder="Full Name" />
                             <div style="margin-bottom: 10px;">
                                 <div >
                                     <select ng-model="signupModel.sex" ng-init="signupModel.sex = 'Sex'">
