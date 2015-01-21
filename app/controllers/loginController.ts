@@ -1,5 +1,5 @@
 angular.module('codeWarriorApp.controllers', [])
-    .controller('loginController', function ($scope, $location, loginService) {
+    .controller('loginController', function ($scope, $rootScope, $location, loginServices) {
         $scope.loginMessage = '';
         $scope.signupMessage = '';
         $scope.loginModel = {};
@@ -8,28 +8,55 @@ angular.module('codeWarriorApp.controllers', [])
         $scope.login = function () {
             if ($scope.validateLogin()) {
                 $scope.loginMessage = '';
-                if ($scope.loginModel.email == 'imscodewarrior@imshealth.com' && $scope.loginModel.password == 'ims') {
-                    $location.url('/home');
-                } else {
-                    $scope.loginMessage = 'invalid user name or password';
-                }
+                $scope.callLoginService($scope.loginModel.userName, $scope.loginModel.password, $scope.loginModel.password);
             }
         };
 
         $scope.signup = function () {
-            console.log('entered1');
             if ($scope.validateSingup()) {
-                console.log('entered2');
                 $scope.signupMessage = '';
-                loginServices.register($scope.signupModel.email, $scope.signupModel.password).success(function (response) {
-                    console.log(response);
-                });
+                $scope.callRegisterService($scope.signupModel.name, $scope.signupModel.password, $scope.signupModel.confirmPassword);
             }
+            
+        };
+
+        $scope.callRegisterService = function (userName, password, confirmPassowrd) {
+            var registerUrl = "http://localhost:64237/api/account/register";
+            var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd;
+            $.post(registerUrl, data).success(function (response) {
+                $scope.$apply(function () {
+                    $scope.signupMessage = 'Successfully registered, please login';
+                });
+            }).error(function (response) {
+                $scope.$apply(function () {
+                    $scope.signupMessage = 'Invalid request, please check all the fields again';
+                });
+            });
+        };
+        
+        $scope.callLoginService = function (userName, password, confirmPassowrd) {
+            var loginUrl = "http://localhost:64237/Token";
+            var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd + '&grant_type=password';
+            $.post(loginUrl, data).success(function (response) {
+                console.log(response.access_token);
+                localStorage.accessToken = response.access_token;
+                $scope.$apply(function () {
+                    $rootScope.loginStatus = 'login';
+                    $rootScope.loginClass = 'logout';
+                    $rootScope.logoutClass = 'login';
+                    $location.url('http://localhost:8000');
+                });
+            }).error(function (response) {
+                console.log(response);
+                $scope.$apply(function () {
+                    $scope.loginMessage = 'invalid user name or password';
+                });
+            });
         };
 
         $scope.validateLogin = function () {
-            if (!$scope.loginModel.email) {
-                $scope.loginMessage = 'email field is empty';
+            if (!$scope.loginModel.userName) {
+                $scope.loginMessage = 'User name field is empty';
                 return false;
             }
             if (!$scope.loginModel.password) {
@@ -40,6 +67,8 @@ angular.module('codeWarriorApp.controllers', [])
         };
 
         $scope.validateSingup = function () {
+            console.log($scope.signupModel.password);
+            console.log($scope.signupModel.confirmPassword);
             if (!$scope.signupModel.name) {
                 $scope.signupMessage = 'name field is empty';
                 return false;
@@ -62,6 +91,10 @@ angular.module('codeWarriorApp.controllers', [])
             }
             if (!$scope.signupModel.password) {
                 $scope.signupMessage = 'password field is empty';
+                return false;
+            }
+            if ($scope.signupModel.password != $scope.signupModel.confirmPassword) {
+                $scope.signupMessage = 'passowrd not matched';
                 return false;
             }
             return true;

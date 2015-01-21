@@ -10,5 +10,5 @@ angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.
             when('/account', { templateUrl: 'Templates/account.html', controller: 'accountController' }).
             otherwise({ redirectTo: '/home' });
         $locationProvider.html5Mode(true);
-        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        //delete $httpProvider.defaults.headers.common["X-Requested-With"];
     }]);

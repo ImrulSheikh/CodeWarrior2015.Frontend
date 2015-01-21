@@ -9,7 +9,7 @@
                         <h2>Login to your account</h2>
                         <label class="text-danger" ng-bind="loginMessage"></label>
                         <form >
-                            <input type="email" ng-model="loginModel.email" placeholder="Email" />
+                            <input type="text" ng-model="loginModel.userName" placeholder="User Name" />
                             <input type="password" ng-model="loginModel.password" placeholder="Password" />
                             <span>
                                 <input type="checkbox" ng-model="loginModel.keepSignIn" class="checkbox">
@@ -43,6 +43,7 @@
                             <input type="tel" ng-model="signupModel.mobile" placeholder="Mobile" />
                             <input type="email" ng-model="signupModel.email" placeholder="Email" />
                             <input type="password" ng-model="signupModel.password" placeholder="Password" />
+                            <input type="password" ng-model="signupModel.confirmPassword" placeholder="Confirm Password" />
                             <button ng-click="signup()" class="btn btn-default">Signup</button>
                         </form>
                     </div><!--/sign up form-->
