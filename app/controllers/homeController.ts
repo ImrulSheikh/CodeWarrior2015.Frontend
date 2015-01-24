@@ -1,7 +1,34 @@
-angular.module('codeWarriorApp.controllers', [])
-    .controller('homeController', function ($scope, $rootScope) {
-        $scope.title = 'Code Warrior 2015 : E-Shop home';
-        $rootScope.loginStatus = 'logout';
-        $rootScope.loginClass = 'login';
-        $rootScope.logoutClass = 'logout';
-    });
+module Controllers{
+	export class HomeController{
+		constructor($scope, $rootScope){
+			$scope.vm = this;
+		}
+
+		init(){
+			if (localStorage.accessToken && localStorage.accessToken != 'null') {
+                jQuery('#login-id').hide();
+                jQuery('#logout-id').show();
+                jQuery('#user-id').show();
+            } else {
+                jQuery('#login-id').show();
+                jQuery('#logout-id').hide();
+                jQuery('#user-id').hide();
+            }
+		}
+
+		logout () {
+            this.callLogoutService();
+        }
+        
+        callLogoutService() {
+            var logoutUrl = "http://localhost:64237/api/Account/Logout";
+            $.post(logoutUrl).success(function (response) {
+                localStorage.accessToken = null;
+                jQuery('#login-id').show();
+                jQuery('#logout-id').hide();
+            }).error(function (response) {
+                alert('Error while logging out');
+            });
+        };
+	}
+}
