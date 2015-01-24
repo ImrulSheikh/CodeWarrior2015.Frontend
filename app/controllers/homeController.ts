@@ -4,7 +4,7 @@ module Controllers{
 			$scope.vm = this;
 		}
 
-		init(){
+		function init(){
 			if (localStorage.accessToken && localStorage.accessToken != 'null') {
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
@@ -16,11 +16,11 @@ module Controllers{
             }
 		}
 
-		logout () {
+		function logout () {
             this.callLogoutService();
         }
         
-        callLogoutService() {
+        function callLogoutService() {
             var logoutUrl = "http://localhost:64237/api/Account/Logout";
             $.post(logoutUrl).success(function (response) {
                 localStorage.accessToken = null;

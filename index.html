@@ -9,6 +9,7 @@
     <link href="lib/eshopper/css/eshopper.min.css" rel="stylesheet">
 
     <script type="application/javascript" src="lib/app/jquery.js"></script>
+    <script type="application/javascript" src="lib/utility/helper.js"></script>
     <script type="application/javascript" src="lib/angular/angular.js"></script>
     <script type="application/javascript" src="lib/angular/angular-route.js"></script>
     <script type="application/javascript" src="lib/angular/app.js"></script>
@@ -62,13 +63,13 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a id="account-id" href="#/account"><i class="fa fa-user"></i> Account</a></li>
+                                        <li id="account-id" style="display:none"><a href="#/account"><i class="fa fa-user"></i> Account</a></li>
                                         <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                         <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                         <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                        <li id="login-id"><a href="#/login"><i class="fa fa-lock"></i> Login</a></li>
-                                        <li id="logout-id"><a href="javascript:void(0)"><i class="fa fa-lock"></i> Logout</a></li>
-                                        <li id="user-id"><a class="active" href="javascript:void(0)"></a></li>
+                                        <li id="login-id" style="display:none"><a href="#/login"><i class="fa fa-lock"></i> Login</a></li>
+                                        <li id="logout-id" style="display:none"><a href="javascript:void(0)"><i class="fa fa-lock"></i> Logout</a></li>
+                                        <li id="user-id" style="display:none"><a class="active" href="javascript:void(0)"></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -134,16 +135,8 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function() {
-        function callLogoutService() {
-            localStorage.accessToken = null;
-            jQuery('#login-id').show();
-            jQuery('#logout-id').hide();
-            jQuery('#user-id').hide();
-            window.location = 'http://localhost:8000/#/home';
-        };
-
         jQuery('#logout-id').click(function() {
-            callLogoutService();
+            helper.logout();
         });
     });
 </script>
