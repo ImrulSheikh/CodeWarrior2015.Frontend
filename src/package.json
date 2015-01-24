@@ -1,0 +1,15 @@
+{
+  "name": "CodeWarrior2015.Frontend",
+  "version": "0.0.1",
+  "description": "Frontend HTML, CSS & JS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sheikh-imrul/CodeWarrior2015.Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsd": "^0.5.7"
+  }
+}

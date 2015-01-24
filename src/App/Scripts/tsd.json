@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "reference.ts",
+  "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "1c829808b649eb0c794ec8caf38177495a5d7630"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "1c829808b649eb0c794ec8caf38177495a5d7630"
+    },
+    "react/react.d.ts": {
+      "commit": "1c829808b649eb0c794ec8caf38177495a5d7630"
+    },
+    "handlebars/handlebars.d.ts": {
+      "commit": "1c829808b649eb0c794ec8caf38177495a5d7630"
+    }
+  }
+}

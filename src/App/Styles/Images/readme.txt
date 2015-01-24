@@ -1,0 +1,1 @@
+﻿CSS images will be stored here and there will be another copy of the same image will be in ~/Assets/Styles/Images

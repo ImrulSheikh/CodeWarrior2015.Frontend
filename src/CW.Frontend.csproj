@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE8D14A7-7D9A-4616-A354-FCC997BF7A33}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CW.Frontend</RootNamespace>
+    <AssemblyName>CW.Frontend</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Styles\Images\readme.txt" />
+    <Content Include="Assets\Images\readme.txt" />
+    <Content Include="Assets\Libraries\css\eshopper\404.html" />
+    <Content Include="Assets\Libraries\css\eshopper\blog-single.html" />
+    <Content Include="Assets\Libraries\css\eshopper\blog.html" />
+    <Content Include="Assets\Libraries\css\eshopper\cart.html" />
+    <Content Include="Assets\Libraries\css\eshopper\checkout.html" />
+    <Content Include="Assets\Libraries\css\eshopper\contact-us.html" />
+    <Content Include="Assets\Libraries\css\eshopper\css\animate.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\bootstrap.min.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\eshopper.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\eshopper.min.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\font-awesome.min.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\main.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\prettyPhoto.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\price-range.css" />
+    <Content Include="Assets\Libraries\css\eshopper\css\responsive.css" />
+    <Content Include="Assets\Libraries\css\eshopper\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Libraries\css\eshopper\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\404\404.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\blog-one.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\blog-three.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\blog-two.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\man-four.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\man-one.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\man-three.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\man-two.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\blog\socials.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\cart\one.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\cart\three.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\cart\two.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\bg_border.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\gallery1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\gallery2.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\gallery3.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\gallery4.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\girl1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\girl2.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\girl3.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\iframe1.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\iframe2.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\iframe3.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\iframe4.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\logo.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\lumia-925.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\map.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\new.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\partner1.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\partner2.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\partner3.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\partner4.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\pricing.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product2.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product3.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product4.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product5.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\product6.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\recommend1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\recommend2.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\recommend3.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\sale.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\samsung-s5.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\samsung-s5.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\searchicon.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\shipping.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\home\toyota.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\new.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\rating.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\share.png" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\similar1.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\similar2.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\product-details\similar3.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\advertisement.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product10.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product11.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product12.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product7.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product8.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\images\shop\product9.jpg" />
+    <Content Include="Assets\Libraries\css\eshopper\index.html" />
+    <Content Include="Assets\Libraries\css\eshopper\js\bootstrap.min.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\contact.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\gmaps.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\html5shiv.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\jquery.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\jquery.prettyPhoto.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\jquery.scrollUp.min.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\main.js" />
+    <Content Include="Assets\Libraries\css\eshopper\js\price-range.js" />
+    <Content Include="Assets\Libraries\css\eshopper\login.html" />
+    <Content Include="Assets\Libraries\css\eshopper\product-details.html" />
+    <Content Include="Assets\Libraries\css\eshopper\shop.html" />
+    <Content Include="Assets\Libraries\css\readme.txt" />
+    <Content Include="Assets\Libraries\js\readme.txt" />
+    <Content Include="Assets\Scripts\Helpers\readme.txt" />
+    <Content Include="Assets\Scripts\out.js" />
+    <Content Include="Assets\Styles\Images\readme.txt" />
+    <Content Include="Assets\Styles\Test.css" />
+    <Content Include="Assets\Styles\Test.min.css">
+      <DependentUpon>Test.css</DependentUpon>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="App\Scripts\directives\testme.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppServer\Controllers\HomeController.cs" />
+    <Compile Include="AppServer\Start\BundleConfig.cs" />
+    <Compile Include="AppServer\Start\RouteConfig.cs" />
+    <Compile Include="AppServer\Global.asax.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\MainController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\TestController.ts" />
+    <TypeScriptCompile Include="App\Scripts\directives\directives.ts" />
+    <TypeScriptCompile Include="App\Scripts\directives\testme.html.ts" />
+    <TypeScriptCompile Include="App\Scripts\directives\testme.ts" />
+    <TypeScriptCompile Include="App\Scripts\main.ts" />
+    <TypeScriptCompile Include="App\Scripts\reference.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\LogService.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\services.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\handlebars\handlebars.d.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\react\react.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Styles\Test.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Scripts\tsd.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Libraries\css\eshopper\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Libraries\css\eshopper\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Libraries\css\eshopper\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Libraries\css\eshopper\sendemail.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Styles\Test.css.map">
+      <DependentUpon>Test.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptOutFile>Assets/Scripts/out.js</TypeScriptOutFile>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>36326</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:36326/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
