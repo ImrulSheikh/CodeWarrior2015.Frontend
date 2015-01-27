@@ -1,3 +1,4 @@
+var services = angular.module('codeWarriorApp.servics', []);
 var directives = angular.module('directives', []);
 var testme;
 (function (testme) {
@@ -76,10 +77,9 @@ angular.module('codeWarriorApp.servics', []).factory('loginService', function ($
     };
     return serviceApi;
 });
-angular.module('codeWarriorApp.controllers', []).controller(Controllers);
 angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.servics', 'ngRoute']).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider.when('/home', { templateUrl: 'Templates/home.html', controller: 'homeController' }).when('/login', { templateUrl: 'Templates/login.html', controller: 'loginController' }).when('/account', { templateUrl: 'Templates/account.html', controller: 'accountController' }).otherwise({ redirectTo: '/home' });
     $locationProvider.html5Mode(true);
 }]);
-var services = angular.module('codeWarriorApp.servics', []);
+angular.module('codeWarriorApp.controllers', []).controller(Controllers);
 //# sourceMappingURL=out.js.map

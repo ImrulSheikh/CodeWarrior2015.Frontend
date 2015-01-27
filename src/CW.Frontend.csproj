@@ -97,8 +97,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Styles\Images\lumia-925.jpg" />
     <Content Include="App\Styles\Images\readme.txt" />
+    <Content Include="App\Templates\account.html" />
+    <Content Include="App\Templates\login.html" />
     <Content Include="Assets\Images\readme.txt" />
+    <Content Include="App\Styles\Images\samsung-s5.jpg" />
+    <Content Include="App\Styles\Images\samsung-s5.png" />
+    <Content Include="App\Styles\Images\toyota.png" />
     <Content Include="Assets\Libraries\css\eshopper\404.html" />
     <Content Include="Assets\Libraries\css\eshopper\blog-single.html" />
     <Content Include="Assets\Libraries\css\eshopper\blog.html" />
@@ -193,6 +199,7 @@
     <Content Include="Assets\Libraries\css\eshopper\shop.html" />
     <Content Include="Assets\Libraries\css\readme.txt" />
     <Content Include="Assets\Libraries\js\readme.txt" />
+    <Content Include="Assets\Scripts\Helpers\helper.js" />
     <Content Include="Assets\Scripts\Helpers\readme.txt" />
     <Content Include="Assets\Scripts\out.js" />
     <Content Include="Assets\Styles\Images\readme.txt" />
