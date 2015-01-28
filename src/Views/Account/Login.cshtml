@@ -1,0 +1,55 @@
+﻿<div>
+    <section id="form" style="margin-top: 40px; margin-bottom: 40px;">
+        <!--form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="login-form">
+                        <!--login form-->
+                        <h2>Login to your account</h2>
+                        <label class="text-danger" id="login-message"></label>
+                        <form>
+                            <input type="text" id="login-userName" placeholder="User Name" />
+                            <input type="password" id="login-password" placeholder="Password" />
+                            <span>
+                                <input type="checkbox" id="login-keepSignIn" class="checkbox">
+                                Keep me signed in
+                            </span>
+                            <button onclick="accountService.login()" class="btn btn-default">Login</button>
+                        </form>
+                    </div><!--/login form-->
+                </div>
+                <div class="col-sm-1">
+                    <h2 class="or">OR</h2>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>New User Signup!</h2>
+                        <label class="text-danger" id="signup-message"></label>
+                        <form>
+                            <input type="text" id="signup-userName" placeholder="Name" />
+                            <input type="text" id="signup-fullName" placeholder="Full Name" />
+                            <div style="margin-bottom: 10px;">
+                                <div>
+                                    <select id="signup-sex">
+                                        <option selected="selected">Sex</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="text" id="signup-addressLine1" placeholder="Address Line 1" />
+                            <input type="text" id="signup-addressLine2" placeholder="Address Line 2" />
+                            <input type="tel" id="signup-mobile" placeholder="Mobile" />
+                            <input type="email" id="signup-email" placeholder="Email" />
+                            <input type="password" id="signup-password" placeholder="Password" />
+                            <input type="password" id="signup-confirmPassword" placeholder="Confirm Password" />
+                            <button onclick="accountService.signup()" class="btn btn-default">Signup</button>
+                        </form>
+                    </div><!--/sign up form-->
+                </div>
+            </div>
+        </div>
+    </section><!--/form-->
+</div>

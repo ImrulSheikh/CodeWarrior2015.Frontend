@@ -100,6 +100,7 @@
     <Content Include="App\Styles\Images\lumia-925.jpg" />
     <Content Include="App\Styles\Images\readme.txt" />
     <Content Include="App\Templates\account.html" />
+    <Content Include="App\Templates\home.html" />
     <Content Include="App\Templates\login.html" />
     <Content Include="Assets\Images\readme.txt" />
     <Content Include="App\Styles\Images\samsung-s5.jpg" />
@@ -199,9 +200,12 @@
     <Content Include="Assets\Libraries\css\eshopper\shop.html" />
     <Content Include="Assets\Libraries\css\readme.txt" />
     <Content Include="Assets\Libraries\js\readme.txt" />
+    <Content Include="Assets\Scripts\Helpers\global.js" />
     <Content Include="Assets\Scripts\Helpers\helper.js" />
     <Content Include="Assets\Scripts\Helpers\readme.txt" />
+    <Content Include="Assets\Scripts\Helpers\validator.js" />
     <Content Include="Assets\Scripts\out.js" />
+    <Content Include="Assets\Scripts\Services\account-service.js" />
     <Content Include="Assets\Styles\Images\readme.txt" />
     <Content Include="Assets\Styles\Test.css" />
     <Content Include="Assets\Styles\Test.min.css">
@@ -209,9 +213,20 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="App\Scripts\directives\testme.html" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServer\Controllers\AccountController.cs" />
     <Compile Include="AppServer\Controllers\HomeController.cs" />
     <Compile Include="AppServer\Start\BundleConfig.cs" />
     <Compile Include="AppServer\Start\RouteConfig.cs" />
