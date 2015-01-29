@@ -200,12 +200,10 @@
     <Content Include="Assets\Libraries\css\eshopper\shop.html" />
     <Content Include="Assets\Libraries\css\readme.txt" />
     <Content Include="Assets\Libraries\js\readme.txt" />
-    <Content Include="Assets\Scripts\Helpers\global.js" />
-    <Content Include="Assets\Scripts\Helpers\helper.js" />
-    <Content Include="Assets\Scripts\Helpers\readme.txt" />
-    <Content Include="Assets\Scripts\Helpers\validator.js" />
+    <Content Include="Assets\Scripts\angular-route.js" />
+    <Content Include="Assets\Scripts\helper.js" />
+    <Content Include="Assets\Scripts\ngStorage.js" />
     <Content Include="Assets\Scripts\out.js" />
-    <Content Include="Assets\Scripts\Services\account-service.js" />
     <Content Include="Assets\Styles\Images\readme.txt" />
     <Content Include="Assets\Styles\Test.css" />
     <Content Include="Assets\Styles\Test.min.css">
@@ -241,6 +239,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\loginController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\MainController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\TestController.ts" />
     <TypeScriptCompile Include="App\Scripts\directives\directives.ts" />
@@ -251,7 +250,9 @@
     <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\LogService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\services.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="App\Scripts\typings\angularjs\angularLocalStorage.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\handlebars\handlebars.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\react\react.d.ts" />

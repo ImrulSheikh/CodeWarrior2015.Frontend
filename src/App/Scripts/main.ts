@@ -1,15 +1,11 @@
 /// <reference path="reference.ts" />
 
-//angular.module('myApp',['controllers','services','directives']);
-
-angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.servics', 'ngRoute'])
+angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.services', 'ngRoute', 'ngStorage'])
     .config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.
-            when('/home', { templateUrl: 'Templates/home.html', controller: 'homeController' }).
-            when('/login', { templateUrl: 'Templates/login.html', controller: 'loginController' }).
-            when('/account', { templateUrl: 'Templates/account.html', controller: 'accountController' }).
+            when('/home', { templateUrl: 'App/Templates/home.html', controller: 'HomeController' }).
+            when('/login', { templateUrl: 'App/Templates/login.html', controller: 'LoginController' }).
+            when('/account', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).
             otherwise({ redirectTo: '/home' });
-        $locationProvider.html5Mode(true);
-
-        //delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        //$locationProvider.html5Mode(true);
     }]);

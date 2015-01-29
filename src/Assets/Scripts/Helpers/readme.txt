@@ -1,1 +1,0 @@
-﻿Helper JS files

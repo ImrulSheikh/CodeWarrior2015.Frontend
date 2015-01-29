@@ -1,6 +1,6 @@
 /// <reference path="../reference.ts" />
 
-angular.module('codeWarriorApp.servics', [])
+angular.module('codeWarriorApp.services', [])
     .factory('loginService', function ($http) {
     var serviceApi = {
         register:
