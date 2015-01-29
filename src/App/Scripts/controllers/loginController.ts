@@ -2,6 +2,7 @@
 
 module Controllers {
     export class LoginController {
+        private $scope;
         private $localStorage;
         private $location;
         private loginMessage = '';
@@ -12,8 +13,12 @@ module Controllers {
             addressLine1: '', addressLine2: '', mobile: '',
             email: '', password: '', confirmPassword: ''
         };
+
+        //static $inject = ['$scope', '$rootScope', '$localStorage', '$location'];
+
         constructor($scope, $rootScope, $localStorage, $location) {
             $scope.vm = this;
+            this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.$location = $location;
             this.init();
@@ -24,10 +29,12 @@ module Controllers {
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();
+                jQuery('#account-id').show();
             } else {
                 jQuery('#login-id').show();
                 jQuery('#logout-id').hide();
                 jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
             }
         }
 
@@ -38,6 +45,14 @@ module Controllers {
             }
         }
 
+        public signup() {
+            if (this.validateSingup()) {
+                this.signupMessage = '';
+                this.callRegisterService();
+            }
+
+        }
+
         private callLoginService(userName, password, confirmPassowrd) {
             var pub = this;
             var loginUrl = "http://localhost:64237/Token";
@@ -45,10 +60,14 @@ module Controllers {
             $.post(loginUrl, data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
                 pub.$localStorage.userName = userName;
-                //helper.showLoginMenu();
-                this.$location.url('/home');
+                pub.showLoginMenu();
+                pub.$scope.$apply(function () {
+                    pub.$location.path('/home');
+                });
             }).fail(function (response) {
-                pub.loginMessage = 'invalid user name or password';
+                pub.$scope.$apply(function () {
+                    pub.loginMessage = 'invalid user name or password';
+                });
             });
         }
 
@@ -62,10 +81,14 @@ module Controllers {
                 "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 +
                 '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
             $.post(registerUrl, data).done(function (response) {
-                pub.clearRegisterModel();
-                pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                pub.$scope.$apply(function () {
+                    pub.clearRegisterModel();
+                    pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                });
             }).fail(function (response) {
-                pub.signupMessage = 'Invalid request, please check all the fields again';
+                pub.$scope.$apply(function () {
+                    pub.signupMessage = 'Invalid request, please check all the fields again';
+                });
             });
         }
 
@@ -82,8 +105,6 @@ module Controllers {
         }
 
         private validateSingup() {
-            //console.log($scope.signupModel.password);
-            // console.log($scope.signupModel.confirmPassword);
             if (!this.signupModel.userName) {
                 this.signupMessage = 'name field is empty';
                 return false;
@@ -133,6 +154,15 @@ module Controllers {
             this.signupModel.addressLine2 = '';
             this.signupModel.mobile = '';
             this.signupModel.email = '';
+        }
+
+        private showLoginMenu() {
+            jQuery('#login-id').hide();
+            jQuery('#logout-id').show();
+            jQuery('#user-id').show();
+            jQuery('#account-id').show();
+            jQuery('#account-id a').attr('href', '#/account/' + this.$localStorage.userName);
+            jQuery('#user-id a').text(this.$localStorage.userName);
         }
     }
 }

@@ -20,7 +20,7 @@ var helper = {
 		localStorage.userName = null;
 		jQuery('#account-id a').attr('href', '#/account/');
         helper.showLogoutMenu();
-        window.location = 'http://localhost:8000/#/home';
+        window.location = 'http://localhost:36326/#/home';
 	},
 
 	checkLoginStatus: function(){

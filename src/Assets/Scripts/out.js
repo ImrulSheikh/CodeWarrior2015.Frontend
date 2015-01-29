@@ -110,6 +110,7 @@ var Controllers;
                 confirmPassword: ''
             };
             $scope.vm = this;
+            this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.$location = $location;
             this.init();
@@ -119,17 +120,25 @@ var Controllers;
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();
+                jQuery('#account-id').show();
             }
             else {
                 jQuery('#login-id').show();
                 jQuery('#logout-id').hide();
                 jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
             }
         };
         LoginController.prototype.login = function () {
             if (this.validateLogin()) {
                 this.loginMessage = '';
                 this.callLoginService(this.loginModel.userName, this.loginModel.password, this.loginModel.password);
+            }
+        };
+        LoginController.prototype.signup = function () {
+            if (this.validateSingup()) {
+                this.signupMessage = '';
+                this.callRegisterService();
             }
         };
         LoginController.prototype.callLoginService = function (userName, password, confirmPassowrd) {
@@ -139,9 +148,14 @@ var Controllers;
             $.post(loginUrl, data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
                 pub.$localStorage.userName = userName;
-                this.$location.url('/home');
+                pub.showLoginMenu();
+                pub.$scope.$apply(function () {
+                    pub.$location.path('/home');
+                });
             }).fail(function (response) {
-                pub.loginMessage = 'invalid user name or password';
+                pub.$scope.$apply(function () {
+                    pub.loginMessage = 'invalid user name or password';
+                });
             });
         };
         LoginController.prototype.callRegisterService = function () {
@@ -150,10 +164,14 @@ var Controllers;
             var registerUrl = "http://localhost:64237/api/account/register";
             var data = 'userName=' + this.signupModel.userName + '&password=' + this.signupModel.password + '&confirmPassword=' + this.signupModel.confirmPassword + '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex + "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 + '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
             $.post(registerUrl, data).done(function (response) {
-                pub.clearRegisterModel();
-                pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                pub.$scope.$apply(function () {
+                    pub.clearRegisterModel();
+                    pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                });
             }).fail(function (response) {
-                pub.signupMessage = 'Invalid request, please check all the fields again';
+                pub.$scope.$apply(function () {
+                    pub.signupMessage = 'Invalid request, please check all the fields again';
+                });
             });
         };
         LoginController.prototype.validateLogin = function () {
@@ -216,6 +234,14 @@ var Controllers;
             this.signupModel.addressLine2 = '';
             this.signupModel.mobile = '';
             this.signupModel.email = '';
+        };
+        LoginController.prototype.showLoginMenu = function () {
+            jQuery('#login-id').hide();
+            jQuery('#logout-id').show();
+            jQuery('#user-id').show();
+            jQuery('#account-id').show();
+            jQuery('#account-id a').attr('href', '#/account/' + this.$localStorage.userName);
+            jQuery('#user-id a').text(this.$localStorage.userName);
         };
         return LoginController;
     })();

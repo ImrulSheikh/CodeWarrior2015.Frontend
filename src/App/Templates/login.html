@@ -7,7 +7,7 @@
                     <div class="login-form">
                         <!--login form-->
                         <h2>Login to your account</h2>
-                        <label class="text-danger" ng-bind="loginMessage"></label>
+                        <label class="text-danger" ng-bind="vm.loginMessage"></label>
                         <form >
                             <input type="text" ng-model="vm.loginModel.userName" placeholder="User Name" />
                             <input type="password" ng-model="vm.loginModel.password" placeholder="Password" />
@@ -22,9 +22,9 @@
                     <div class="signup-form">
                         <!--sign up form-->
                         <h2>New User Signup!</h2>
-                        <label class="text-danger" ng-bind="signupMessage"></label>
+                        <label class="text-danger" ng-bind="vm.signupMessage"></label>
                         <form >
-                            <input type="text" ng-model="vm.signupModel.userName" placeholder="Name" />
+                            <input type="text" ng-model="vm.signupModel.userName" placeholder="User Name" />
                             <input type="text" ng-model="vm.signupModel.fullName" placeholder="Full Name" />
                             <div style="margin-bottom: 10px;">
                                 <div >
