@@ -240,6 +240,7 @@
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\loginController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\logoutController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\MainController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\TestController.ts" />
     <TypeScriptCompile Include="App\Scripts\directives\directives.ts" />

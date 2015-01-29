@@ -14,10 +14,12 @@ module Controllers{
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();
+                jQuery('#account-id').show();
             } else {
                 jQuery('#login-id').show();
                 jQuery('#logout-id').hide();
                 jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
             }
 		}
 

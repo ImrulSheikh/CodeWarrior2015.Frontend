@@ -39,11 +39,13 @@ var Controllers;
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();
+                jQuery('#account-id').show();
             }
             else {
                 jQuery('#login-id').show();
                 jQuery('#logout-id').hide();
                 jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
             }
         };
         HomeController.prototype.logout = function () {
@@ -246,6 +248,28 @@ var Controllers;
         return LoginController;
     })();
     Controllers.LoginController = LoginController;
+})(Controllers || (Controllers = {}));
+var Controllers;
+(function (Controllers) {
+    var LogoutController = (function () {
+        function LogoutController($scope, $rootScope, $localStorage) {
+            $scope.vm = this;
+            this.$localStorage = $localStorage;
+        }
+        LogoutController.prototype.logout = function () {
+            this.callLogoutService();
+        };
+        LogoutController.prototype.callLogoutService = function () {
+            this.$localStorage.accessToken = null;
+            this.$localStorage.userName = null;
+            jQuery('#login-id').show();
+            jQuery('#logout-id').hide();
+            jQuery('#account-id').hide();
+            jQuery('#user-id').hide();
+        };
+        return LogoutController;
+    })();
+    Controllers.LogoutController = LogoutController;
 })(Controllers || (Controllers = {}));
 var LogService = (function () {
     function LogService() {
