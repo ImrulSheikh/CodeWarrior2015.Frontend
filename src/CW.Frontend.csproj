@@ -237,6 +237,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="App\Scripts\controllers\accountController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\loginController.ts" />
@@ -248,8 +249,8 @@
     <TypeScriptCompile Include="App\Scripts\directives\testme.ts" />
     <TypeScriptCompile Include="App\Scripts\main.ts" />
     <TypeScriptCompile Include="App\Scripts\reference.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\accountService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
-    <TypeScriptCompile Include="App\Scripts\services\LogService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\services.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular.d.ts" />

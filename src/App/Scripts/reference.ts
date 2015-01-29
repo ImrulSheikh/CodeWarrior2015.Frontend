@@ -17,6 +17,7 @@
 /// <reference path="directives/testme.ts" />
 
 /// <reference path="services/loginService.ts" />
+/// <reference path="services/accountService.ts" />
 
 
 /// <reference path="controllers/controllers.ts" />

@@ -1,22 +1,11 @@
-/// <reference path="../reference.ts" />
+﻿class LoginService {
+    public login(data) {
+        var loginUrl = "http://localhost:64237/Token";
+        return $.post(loginUrl, data);
+    }
 
-angular.module('codeWarriorApp.services', [])
-    .factory('loginService', function ($http) {
-    var serviceApi = {
-        register:
-        (email, password) => {
-            return $http({
-                method: 'POST',
-                url: 'http://localhost:64237/api/Account/Register',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With'
-                },
-                //crossDomain: true,
-                data: { UserName: email, Password: password, ConfirmPassword: password }
-            });
-        }
-    };
-    return serviceApi;
-});
+    public register(data) {
+        var registerUrl = "http://localhost:64237/api/account/register";
+        return $.post(registerUrl, data);
+    }
+} 

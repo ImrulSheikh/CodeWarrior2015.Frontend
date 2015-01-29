@@ -5,7 +5,7 @@ angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.
         $routeProvider.
             when('/home', { templateUrl: 'App/Templates/home.html', controller: 'HomeController' }).
             when('/login', { templateUrl: 'App/Templates/login.html', controller: 'LoginController' }).
-            when('/account', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).
+            when('/account/:id', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).
             otherwise({ redirectTo: '/home' });
         //$locationProvider.html5Mode(true);
     }]);

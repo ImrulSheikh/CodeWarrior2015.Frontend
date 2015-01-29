@@ -3,9 +3,8 @@
 module Controllers{
     export class MainController{
         message = " Imrul Hasan asdf";
-        constructor($scope,logService:LogService){
+        constructor($scope){
             $scope.vm = this;
-            logService.log('Some log');
         }
     }
 }

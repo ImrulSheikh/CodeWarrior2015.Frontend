@@ -6,10 +6,9 @@ var testme;
 var Controllers;
 (function (Controllers) {
     var MainController = (function () {
-        function MainController($scope, logService) {
+        function MainController($scope) {
             this.message = " Imrul Hasan asdf";
             $scope.vm = this;
-            logService.log('Some log');
         }
         return MainController;
     })();
@@ -48,19 +47,6 @@ var Controllers;
                 jQuery('#account-id').hide();
             }
         };
-        HomeController.prototype.logout = function () {
-            this.callLogoutService();
-        };
-        HomeController.prototype.callLogoutService = function () {
-            var logoutUrl = "http://localhost:64237/api/Account/Logout";
-            $.post(logoutUrl).done(function (response) {
-                this.$localStorage.accessToken = null;
-                jQuery('#login-id').show();
-                jQuery('#logout-id').hide();
-            }).fail(function (response) {
-                alert('Error while logging out');
-            });
-        };
         return HomeController;
     })();
     Controllers.HomeController = HomeController;
@@ -71,32 +57,143 @@ directives.directive('testme', function () {
         template: testme.html
     };
 });
-angular.module('codeWarriorApp.services', []).factory('loginService', function ($http) {
-    var serviceApi = {
-        register: function (email, password) {
-            return $http({
-                method: 'POST',
-                url: 'http://localhost:64237/api/Account/Register',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With'
-                },
-                data: { UserName: email, Password: password, ConfirmPassword: password }
-            });
-        }
+var LoginService = (function () {
+    function LoginService() {
+    }
+    LoginService.prototype.login = function (data) {
+        var loginUrl = "http://localhost:64237/Token";
+        return $.post(loginUrl, data);
     };
-    return serviceApi;
-});
+    LoginService.prototype.register = function (data) {
+        var registerUrl = "http://localhost:64237/api/account/register";
+        return $.post(registerUrl, data);
+    };
+    return LoginService;
+})();
+var AccountService = (function () {
+    function AccountService() {
+    }
+    AccountService.prototype.getProfile = function (data) {
+    };
+    AccountService.prototype.saveProfile = function (data) {
+        var saveUrl = "http://localhost:64237/api/profile/get";
+        return $.post(saveUrl, data);
+    };
+    return AccountService;
+})();
 angular.module('codeWarriorApp.controllers', []).controller(Controllers);
 angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.services', 'ngRoute', 'ngStorage']).config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
-    $routeProvider.when('/home', { templateUrl: 'App/Templates/home.html', controller: 'HomeController' }).when('/login', { templateUrl: 'App/Templates/login.html', controller: 'LoginController' }).when('/account', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).otherwise({ redirectTo: '/home' });
+    $routeProvider.when('/home', { templateUrl: 'App/Templates/home.html', controller: 'HomeController' }).when('/login', { templateUrl: 'App/Templates/login.html', controller: 'LoginController' }).when('/account/:id', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).otherwise({ redirectTo: '/home' });
 }]);
 var services = angular.module('codeWarriorApp.services', []);
 var Controllers;
 (function (Controllers) {
+    var AccountController = (function () {
+        function AccountController($scope, $rootScope, $localStorage) {
+            this.accountService = new AccountService();
+            this.profileEditMessage = '';
+            this.accountModel = {
+                userName: '',
+                fullName: '',
+                sex: '',
+                addressLine1: '',
+                addressLine2: '',
+                mobile: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            };
+            this.saveProfile = function () {
+                if (this.validateProfileEdit()) {
+                }
+            };
+            this.validateProfileEdit = function () {
+                if (!this.accountModel.fullName) {
+                    this.profileEditMessage = 'name field is empty';
+                    return false;
+                }
+                if (!this.accountModel.sex || this.accountModel.sex == 'Sex') {
+                    this.profileEditMessage = 'please select sex';
+                    return false;
+                }
+                if (!this.accountModel.addressLine1) {
+                    this.profileEditMessage = 'address field is empty';
+                    return false;
+                }
+                if (!this.accountModel.mobile) {
+                    this.profileEditMessage = 'mobile number field is empty';
+                    return false;
+                }
+                if (!this.accountModel.email) {
+                    this.profileEditMessage = 'email field is empty';
+                    return false;
+                }
+                if (!this.accountModel.password) {
+                    this.profileEditMessage = 'password field is empty';
+                    return false;
+                }
+                if (this.accountModel.password.length < 6) {
+                    this.profileEditMessage = 'passowrd must be atleast 6 character/digit long';
+                    return false;
+                }
+                return true;
+            };
+            $scope.vm = this;
+            this.$scope = $scope;
+            this.$localStorage = $localStorage;
+            this.init();
+        }
+        AccountController.prototype.init = function () {
+            this.checkLoginStatus();
+            this.callGetProfileService();
+        };
+        AccountController.prototype.callSaveProfileService = function () {
+            var pub = this;
+            this.profileEditMessage = 'Registering..';
+            var data = 'userName=' + this.accountModel.userName + '&password=' + this.accountModel.password + '&confirmPassword=' + this.accountModel.confirmPassword + '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex + "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 + '&phoneNumber=' + this.accountModel.mobile + '&emailAddress=' + this.accountModel.email;
+            this.accountService.saveProfile(data).done(function (response) {
+                pub.$scope.$apply(function () {
+                    pub.profileEditMessage = 'Saved successfully';
+                });
+            }).fail(function (response) {
+                pub.$scope.$apply(function () {
+                    pub.profileEditMessage = 'Error while saving profile information';
+                });
+            });
+        };
+        AccountController.prototype.callGetProfileService = function () {
+            this.accountModel.userName = this.$localStorage.userName;
+            this.accountModel.fullName = 'Code Warrior';
+            this.accountModel.sex = 'Male';
+            this.accountModel.addressLine1 = 'addressLine1';
+            this.accountModel.addressLine2 = 'addressLine2';
+            this.accountModel.mobile = '34059834';
+            this.accountModel.email = 'tbh.tilok@live.com';
+            this.accountModel.password = 'cwcUser';
+        };
+        AccountController.prototype.checkLoginStatus = function () {
+            if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
+                jQuery('#login-id').hide();
+                jQuery('#logout-id').show();
+                jQuery('#user-id').show();
+                jQuery('#account-id').show();
+            }
+            else {
+                jQuery('#login-id').show();
+                jQuery('#logout-id').hide();
+                jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
+            }
+        };
+        return AccountController;
+    })();
+    Controllers.AccountController = AccountController;
+})(Controllers || (Controllers = {}));
+var Controllers;
+(function (Controllers) {
     var LoginController = (function () {
         function LoginController($scope, $rootScope, $localStorage, $location) {
+            this.loginServicve = new LoginService();
             this.loginMessage = '';
             this.signupMessage = '';
             this.loginModel = { userName: 'tilok369', password: '' };
@@ -145,9 +242,9 @@ var Controllers;
         };
         LoginController.prototype.callLoginService = function (userName, password, confirmPassowrd) {
             var pub = this;
-            var loginUrl = "http://localhost:64237/Token";
+            this.loginMessage = 'log in..';
             var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd + '&grant_type=password';
-            $.post(loginUrl, data).done(function (response) {
+            this.loginServicve.login(data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
                 pub.$localStorage.userName = userName;
                 pub.showLoginMenu();
@@ -163,9 +260,8 @@ var Controllers;
         LoginController.prototype.callRegisterService = function () {
             var pub = this;
             this.signupMessage = 'Registering..';
-            var registerUrl = "http://localhost:64237/api/account/register";
             var data = 'userName=' + this.signupModel.userName + '&password=' + this.signupModel.password + '&confirmPassword=' + this.signupModel.confirmPassword + '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex + "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 + '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
-            $.post(registerUrl, data).done(function (response) {
+            this.loginServicve.login(data).done(function (response) {
                 pub.$scope.$apply(function () {
                     pub.clearRegisterModel();
                     pub.signupMessage = 'Please login to your email address for registration cofirmation';
@@ -271,13 +367,4 @@ var Controllers;
     })();
     Controllers.LogoutController = LogoutController;
 })(Controllers || (Controllers = {}));
-var LogService = (function () {
-    function LogService() {
-    }
-    LogService.prototype.log = function (msg) {
-        console.log(msg);
-    };
-    return LogService;
-})();
-services.service('logService', LogService);
 //# sourceMappingURL=out.js.map

@@ -2,6 +2,7 @@
 
 module Controllers {
     export class LoginController {
+        private loginServicve = new LoginService();
         private $scope;
         private $localStorage;
         private $location;
@@ -55,9 +56,9 @@ module Controllers {
 
         private callLoginService(userName, password, confirmPassowrd) {
             var pub = this;
-            var loginUrl = "http://localhost:64237/Token";
+            this.loginMessage = 'log in..';
             var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd + '&grant_type=password';
-            $.post(loginUrl, data).done(function (response) {
+            this.loginServicve.login(data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
                 pub.$localStorage.userName = userName;
                 pub.showLoginMenu();
@@ -74,13 +75,12 @@ module Controllers {
         private callRegisterService() {
             var pub = this;
             this.signupMessage = 'Registering..';
-            var registerUrl = "http://localhost:64237/api/account/register";
             var data = 'userName=' + this.signupModel.userName + '&password=' + this.signupModel.password +
                 '&confirmPassword=' + this.signupModel.confirmPassword +
                 '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex +
                 "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 +
                 '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
-            $.post(registerUrl, data).done(function (response) {
+            this.loginServicve.login(data).done(function (response) {
                 pub.$scope.$apply(function () {
                     pub.clearRegisterModel();
                     pub.signupMessage = 'Please login to your email address for registration cofirmation';

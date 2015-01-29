@@ -22,20 +22,5 @@ module Controllers{
                 jQuery('#account-id').hide();
             }
 		}
-
-		public  logout () {
-            this.callLogoutService();
-        }
-        
-        public  callLogoutService() {
-            var logoutUrl = "http://localhost:64237/api/Account/Logout";
-            $.post(logoutUrl).done(function (response) {
-                this.$localStorage.accessToken = null;
-                jQuery('#login-id').show();
-                jQuery('#logout-id').hide();
-            }).fail( function(response) {
-                alert('Error while logging out');
-            });
-        }
 	}
 }
