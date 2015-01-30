@@ -24,28 +24,8 @@ module Controllers {
             jQuery('#home-id').addClass('active');
             this.checkLoginStatus();
             this.callCategoryService();
+            this.callProductService();
         }
-
-        public callCategoryService() {
-            var pub = this;
-            this.categoryServicve.getCategories().done(function (response) {
-
-                pub.categories = new Array<Object>();
-                for (var i = 0; i < response.length; i++) {
-                    pub.$scope.$apply(function () {
-                        pub.categories.push(response[i]);
-                    });
-
-                }
-                console.log(pub.categories);
-
-
-            })
-                .fail(function (response) {
-                console.log('Error: ' + response);
-            });
-        }
-
 
         private checkLoginStatus() {
             if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
@@ -64,24 +44,37 @@ module Controllers {
             }
         }
 
+        public callCategoryService() {
+            var pub = this;
+            this.categoryServicve.getCategories().done(function (response) {
+
+                pub.categories = new Array<Object>();
+                for (var i = 0; i < response.length; i++) {
+                    pub.$scope.$apply(function () {
+                        pub.categories.push(response[i]);
+                    });
+                }
+
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
+        }
         public callProductService() {
             var pub = this;
-            var data = { Brand: '', Price: -1, CategoryId: 0, SubCategoryId: 0 };
+            
             this.productServicve.getProducts().done(function (response) {
 
                 pub.products = new Array<Object>();
                 for (var i = 0; i < response.length; i++) {
-
                     pub.$scope.$apply(function () {
                         pub.products.push(response[i]);
                     });
 
                 }
-                console.log('products:' + pub.products);
+                console.log(pub.products[0]);
 
-
-            })
-                .fail(function (response) {
+            }).fail(function (response) {
                 console.log('Error: ' + response);
             });
         }
