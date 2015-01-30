@@ -1,32 +1,22 @@
 ﻿/// <reference path="../reference.ts" />
 
 module Controllers {
-    export class LogoutController {
+    export class AddProductController {
+        private $scope;
         private $localStorage;
         private $location;
+        private buyInfoList: Array<Object>;
+
         constructor($scope, $rootScope, $localStorage, $location) {
             $scope.vm = this;
+            this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.$location = $location;
             this.init();
         }
 
-        private init()
-        {
+        public init() {
             this.checkLoginStatus();
-        }
-
-        public logout() {
-            this.callLogoutService();
-        }
-
-        public callLogoutService() {
-            this.$localStorage.accessToken = null;
-            this.$localStorage.userName = null;
-            jQuery('#login-id').show();
-            jQuery('#logout-id').hide();
-            jQuery('#account-id').hide();
-            jQuery('#user-id').hide();
         }
 
         private checkLoginStatus() {

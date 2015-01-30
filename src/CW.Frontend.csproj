@@ -100,6 +100,7 @@
     <Content Include="App\Styles\Images\lumia-925.jpg" />
     <Content Include="App\Styles\Images\readme.txt" />
     <Content Include="App\Templates\account.html" />
+    <Content Include="App\Templates\addProduct.html" />
     <Content Include="App\Templates\sellerProfile.html" />
     <Content Include="App\Templates\home.html" />
     <Content Include="App\Templates\login.html" />
@@ -247,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\Scripts\controllers\accountController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\addProductController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\sellerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\buyerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />

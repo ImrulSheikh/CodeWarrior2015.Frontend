@@ -117,8 +117,10 @@ module Controllers {
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
+                jQuery('#add-product-id').show();
             } else {
                 this.$location.path('/home');
+                jQuery('#add-product-id').hide();
             }
         }
     }

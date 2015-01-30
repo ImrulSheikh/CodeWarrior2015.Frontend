@@ -13,26 +13,13 @@ module Controllers {
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
-            this.init();
-
-            
+            this.init();   
         }
 
         public init() {
             jQuery('#home-id').removeClass('active');
             jQuery('#home-id').addClass('active');
-            if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
-                jQuery('#login-id').hide();
-                jQuery('#logout-id').show();
-                jQuery('#user-id').show();
-                jQuery('#account-id').show();
-                jQuery('#user-id a').text(this.$localStorage.userName);
-            } else {
-                jQuery('#login-id').show();
-                jQuery('#logout-id').hide();
-                jQuery('#user-id').hide();
-                jQuery('#account-id').hide();
-            }
+            this.checkLoginStatus();
             this.callCategoryService();
         }
 
@@ -55,6 +42,24 @@ module Controllers {
                 .fail(function (response) {
                 console.log('Error: ' + response);
             });
+        }
+
+        private checkLoginStatus()
+        {
+            if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
+                jQuery('#login-id').hide();
+                jQuery('#logout-id').show();
+                jQuery('#user-id').show();
+                jQuery('#account-id').show();
+                jQuery('#add-product-id').show();
+                jQuery('#user-id a').text(this.$localStorage.userName);
+            } else {
+                jQuery('#login-id').show();
+                jQuery('#logout-id').hide();
+                jQuery('#user-id').hide();
+                jQuery('#account-id').hide();
+                jQuery('#add-product-id').hide();
+            }
         }
     }
 }

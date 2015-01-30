@@ -10,9 +10,9 @@ module Controllers {
         private signupMessage = '';
         private loginModel = { userName: 'tanjeer369', password: 'tanjeer369' };
         private signupModel = {
-            userName: '', fullName: '', sex: '',
-            addressLine1: '', addressLine2: '', mobile: '',
-            email: '', password: '', confirmPassword: ''
+            userName: 'tanjeer369', fullName: 'Tanjeer', sex: '',
+            addressLine1: '', addressLine2: '', mobile: '31351351',
+            email: 'tbh.tilok@live.com', password: 'tanjeer369', confirmPassword: 'tanjeer369'
         };
 
         //static $inject = ['$scope', '$rootScope', '$localStorage', '$location'];
@@ -80,15 +80,13 @@ module Controllers {
                 '&confirmPassword=' + this.signupModel.confirmPassword +
                 '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex +
                 "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 +
-                '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
+                '&phoneNumber=' + this.signupModel.mobile + '&email=' + this.signupModel.email;
             this.loginServicve.register(data).done(function (response) {
-                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.clearRegisterModel();
                     pub.signupMessage = 'Registration successful';
                 });
             }).fail(function (response) {
-                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.signupMessage = 'Invalid request, please check all the fields again';
                 });

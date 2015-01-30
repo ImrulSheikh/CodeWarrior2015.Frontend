@@ -14,6 +14,12 @@
 /// <reference path="controllers/MainController.ts" />
 /// <reference path="controllers/TestController.ts" />
 /// <reference path="controllers/homeController.ts" />
+/// <reference path="controllers/loginController.ts" />
+/// <reference path="controllers/logoutController.ts" />
+/// <reference path="controllers/accountController.ts" />
+/// <reference path="controllers/buyerProfileController.ts" />
+/// <reference path="controllers/sellerProfileController.ts" />
+/// <reference path="controllers/addProductController.ts" />
 /// <reference path="directives/testme.ts" />
 
 /// <reference path="services/global.ts" />
