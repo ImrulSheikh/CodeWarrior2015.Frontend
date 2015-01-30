@@ -27,6 +27,7 @@
 /// <reference path="services/loginService.ts" />
 /// <reference path="services/accountService.ts" />
 /// <reference path="services/categoryService.ts" />
+/// <reference path="services/productService.ts" />
 
 
 /// <reference path="controllers/controllers.ts" />
