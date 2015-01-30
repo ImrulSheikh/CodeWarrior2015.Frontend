@@ -28,7 +28,7 @@ module Controllers {
 
         public saveProfile = function () {
             if (this.validateProfileEdit()) {
-                
+                this.callSaveProfileService();
             }
         };
 
@@ -43,17 +43,22 @@ module Controllers {
         private callSaveProfileService() {
             var pub = this;
             this.profileEditMessage = 'Updating..';
-            var data = 'userName=' + this.accountModel.userName + '&password=' + this.accountModel.password +
-                '&confirmPassword=' + this.accountModel.confirmPassword +
+            //var data = 'userName=' + this.accountModel.userName + '&password=' + this.accountModel.password +
+            //    '&confirmPassword=' + this.accountModel.confirmPassword +
+            //    '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex +
+            //    "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 +
+            //    '&phoneNumber=' + this.accountModel.mobile + '&email=' + this.accountModel.email;
+            var data = 'userName=' + this.accountModel.userName + 
                 '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex +
                 "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 +
-                '&phoneNumber=' + this.accountModel.mobile + '&emailAddress=' + this.accountModel.email;
-            this.accountService.saveProfile(data).done(function (response) {
+                '&phoneNumber=' + this.accountModel.mobile + '&email=' + this.accountModel.email;
+            this.accountService.saveProfile(data, this.$localStorage.accessToken).done(function (response) {
                 pub.$scope.$apply(function () {
                     pub.profileEditMessage = 'Saved successfully';
                 });
             }).fail(function (response) {
                 pub.$scope.$apply(function () {
+                    console.log(response);
                     pub.profileEditMessage = 'Error while saving profile information';
                 });
             });
@@ -61,15 +66,21 @@ module Controllers {
 
         private callGetProfileService() {
             var pub = this;
-            this.accountService.getProfile(this.$localStorage.userName).done(function (response) {
+            this.accountService.getProfile(this.$localStorage.userName, this.$localStorage.accessToken).done(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
-                    
+                    pub.accountModel.userName = response.UserName;
+                    pub.accountModel.fullName = response.FullName;
+                    pub.accountModel.sex = response.Sex;
+                    pub.accountModel.mobile = response.PhoneNumber;
+                    pub.accountModel.email = response.Email;
+                    pub.accountModel.addressLine1 = response.Address.split('|')[0];
+                    pub.accountModel.addressLine2 = response.Address.split('|')[1];
                 });
             }).fail(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
-                    pub.profileEditMessage = 'Error while saving profile information';
+                    pub.profileEditMessage = 'Error while getting profile information';
                 });
             });
         }
@@ -83,20 +94,12 @@ module Controllers {
                 this.profileEditMessage = 'mobile number field is empty';
                 return false;
             }
+            if (!this.checkPhoneNumber(this.accountModel.mobile)) {
+                this.profileEditMessage = 'invalid mobile number';
+                return false;
+            }
             if (!this.accountModel.email) {
                 this.profileEditMessage = 'email field is empty';
-                return false;
-            }
-            if (!this.accountModel.password) {
-                this.profileEditMessage = 'password field is empty';
-                return false;
-            }
-            if (this.accountModel.password.length < 6) {
-                this.profileEditMessage = 'passowrd must be atleast 6 character/digit long';
-                return false;
-            }
-            if (this.accountModel.password != this.accountModel.confirmPassword) {
-                this.signupMessage = 'passowrd not matched';
                 return false;
             }
             return true;
@@ -114,6 +117,14 @@ module Controllers {
                 this.$location.path('/home');
                 jQuery('#add-product-id').hide();
             }
+        }
+
+        private checkPhoneNumber(phone: string) {
+            var regex = /^[\d\.\-]+$/;
+            if (!regex.test(phone)) {
+                return false;
+            }
+            return true;
         }
     }
 } 

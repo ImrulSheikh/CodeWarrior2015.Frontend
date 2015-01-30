@@ -9,7 +9,7 @@ angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.
             when('/buyer', { templateUrl: 'App/Templates/buyerProfile.html', controller: 'BuyerProfileController' }).
             when('/seller', { templateUrl: 'App/Templates/sellerProfile.html', controller: 'SellerProfileController' }).
             when('/addProduct', { templateUrl: 'App/Templates/addProduct.html', controller: 'SellerProfileController' }).
-            when('/productDetails', { templateUrl: 'App/Templates/productDetails.html', controller: 'ProductDetailsController' }).
+            when('/productDetails/:id', { templateUrl: 'App/Templates/productDetails.html', controller: 'ProductDetailsController' }).
             otherwise({ redirectTo: '/home' });
         //$locationProvider.html5Mode(true);
     }]);
