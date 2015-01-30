@@ -55,6 +55,8 @@ module Controllers {
                     });
                 }
 
+                console.log(pub.categories[0]);
+
 
             }).fail(function (response) {
                 console.log('Error: ' + response);
