@@ -67,7 +67,7 @@
                             <div class="panel panel-default" ng-repeat="cat in vm.categories">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear" ng-click="vm.callProductService(cat.Id)">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="javascript:void();" ng-click="vm.callProductService(cat.Id)">
                                             <span class="badge pull-right"></span>
                                             {{cat.Name}}
                                         </a>
@@ -76,8 +76,9 @@
                                 <div id="sportswear" class="">
                                     <div class="panel-body">
                                         <ul>
-                                            <li ng-repeat="subcategory in cat.SubCategories">
-                                                <a href="#">{{subcategory.Name}}</a></li>
+                                            <li ng-repeat="subcategory in cat.SubCategories" ng-click="vm.callProductService(cat.Id,subcategory.Id)">
+                                                <a href="#">{{subcategory.Name}}</a>
+                                            </li>
                                             
                                         </ul>
                                     </div>

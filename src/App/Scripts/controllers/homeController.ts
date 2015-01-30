@@ -24,7 +24,7 @@ module Controllers {
             jQuery('#home-id').addClass('active');
             this.checkLoginStatus();
             this.callCategoryService();
-            this.callProductService();
+            this.callProductService(-1);
         }
 
         private checkLoginStatus() {
@@ -62,10 +62,10 @@ module Controllers {
                 console.log('Error: ' + response);
             });
         }
-        public callProductService() {
+        public callProductService(catId) {
             var pub = this;
             
-            this.productServicve.getProducts().done(function (response) {
+            this.productServicve.getProducts(catId).done(function (response) {
 
                 pub.products = new Array<Object>();
                 for (var i = 0; i < response.length; i++) {
