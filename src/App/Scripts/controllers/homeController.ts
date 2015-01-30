@@ -45,8 +45,6 @@ module Controllers {
                     });
                     
                 }
-
-                pub.categories[0] = { Name: 'Cat 1' };
                 console.log(pub.categories);
 
 
