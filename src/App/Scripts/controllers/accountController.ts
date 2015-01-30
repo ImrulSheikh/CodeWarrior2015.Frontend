@@ -60,22 +60,14 @@ module Controllers {
         }
 
         private callGetProfileService() {
-            this.accountModel.userName = this.$localStorage.userName;
-            this.accountModel.fullName = 'Code Warrior';
-            this.accountModel.sex = 'Male';
-            this.accountModel.addressLine1 = 'addressLine1';
-            this.accountModel.addressLine2 = 'addressLine2';
-            this.accountModel.mobile = '34059834';
-            this.accountModel.email = 'tbh.tilok@live.com';
-            this.accountModel.password = 'cwcUser';
-
             var pub = this;
-            var data = 'userName=' + this.$localStorage.userName;
-            this.accountService.getProfile(data).done(function (response) {
+            this.accountService.getProfile(this.$localStorage.userName).done(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
-                    pub.profileEditMessage = 'Saved successfully';
+                    
                 });
             }).fail(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.profileEditMessage = 'Error while saving profile information';
                 });

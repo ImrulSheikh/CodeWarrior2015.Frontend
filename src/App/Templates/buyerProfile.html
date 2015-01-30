@@ -2,36 +2,73 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#/home">Home</a></li>
+                <li><a href="#/home">Back</a></li>
                 <li class="active">Buying Information</li>
             </ol>
         </div>
-        <div class="table-responsive cart_info">
-            <table class="table table-condensed">
-                <thead>
-                    <tr class="cart_menu">
-                        <td class="description">Name</td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="buyInfo in vm.buyInfoList">
-                        <td class="cart_description" style="width: 60%;">
-                            <h4><a href="">{{buyInfo.Name}}</a></h4>
-                        </td>
-                        <td class="cart_price" style="width: 20%;">
-                            <p>৳ {{buyInfo.Price}}</p>
-                        </td>
-                        <td class="cart_quantity" style="width: 20%;">
-                            <div class="cart_quantity_button">
-                                <p>{{buyInfo.Quantity}}</p>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <label class="text-danger" ng-bind="vm.categoryInfoMessage"></label>
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        <div class="panel panel-default" ng-repeat="cat in vm.categories">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" ng-href="#{{cat.Name}}">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        {{cat.Name}}
+                                    </a>
+                                </h4>
                             </div>
-                        </td>
-                    </tr> 
-                </tbody>
-            </table>
+                            <div id="{{cat.Name}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><a href="#">Sample Subcategory 1 </a></li>
+                                        <li><a href="#">Sample Subcategory 2 </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/category-products-->
+
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="table-responsive cart_info">
+                    <label class="text-danger" ng-bind="vm.buyerInfoMessage"></label>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="description">Category</td>
+                                <td class="description">Name</td>
+                                <td class="price">Price</td>
+                                <td class="quantity">Quantity</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="buyInfo in vm.buyInfoList">
+                                <td class="cart_description" style="width: 40%;">
+                                    <h4>{{buyInfo.CategoryName}}</h4>
+                                </td>
+                                <td class="cart_description" style="width: 40%;">
+                                    <h4><a href="#">{{buyInfo.Name}}</a></h4>
+                                </td>
+                                <td class="cart_price" style="width: 10%;">
+                                    <p>৳ {{buyInfo.Price}}</p>
+                                </td>
+                                <td class="cart_quantity" style="width: 10%;">
+                                    <div class="cart_quantity_button">
+                                        <p>{{buyInfo.NumberOfUnits}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

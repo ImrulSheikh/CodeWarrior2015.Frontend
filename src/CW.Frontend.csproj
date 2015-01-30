@@ -204,6 +204,7 @@
     <Content Include="Assets\Libraries\css\readme.txt" />
     <Content Include="Assets\Libraries\js\readme.txt" />
     <Content Include="Assets\Scripts\angular-route.js" />
+    <Content Include="Assets\Scripts\angular.min.js" />
     <Content Include="Assets\Scripts\eShopper\bootstrap.min.js" />
     <Content Include="Assets\Scripts\eShopper\contact.js" />
     <Content Include="Assets\Scripts\eShopper\html5shiv.js" />
@@ -212,6 +213,8 @@
     <Content Include="Assets\Scripts\eShopper\main.js" />
     <Content Include="Assets\Scripts\eShopper\price-range.js" />
     <Content Include="Assets\Scripts\helper.js" />
+    <Content Include="Assets\Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Assets\Scripts\modernizr-2.8.3.js" />
     <Content Include="Assets\Scripts\ngStorage.js" />
     <Content Include="Assets\Scripts\out.js" />
     <Content Include="Assets\Styles\Images\readme.txt" />
@@ -221,6 +224,7 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="App\Scripts\directives\testme.html" />
+    <Content Include="Assets\Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

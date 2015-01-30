@@ -20,6 +20,7 @@
 /// <reference path="controllers/buyerProfileController.ts" />
 /// <reference path="controllers/sellerProfileController.ts" />
 /// <reference path="controllers/addProductController.ts" />
+/// <reference path="controllers/productDetailsController.ts" />
 /// <reference path="directives/testme.ts" />
 
 /// <reference path="services/global.ts" />
