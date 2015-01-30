@@ -11,16 +11,18 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordian" ng-href="#{{cat.Name}}">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        <span class="badge pull-right"></span>
                                         {{cat.Name}}
                                     </a>
                                 </h4>
                             </div>
-                            <div id="{{cat.Name}}" class="panel-collapse collapse">
+                            <div id="{{cat.Name}}" class="">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Sample Subcategory 1 </a></li>
-                                        <li><a href="#">Sample Subcategory 2 </a></li>
+                                        <li ng-repeat="subcategory in cat.SubCategories" ng-click="vm.callProductService(cat.Id,subcategory.Id)">
+                                            <a href="#">{{subcategory.Name}}</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -48,7 +50,7 @@
                                 <span>৳ {{vm.product.UnitPrice}}</span>
                                 <label>Order Quantity:</label>
                                 <input type="text"/>
-                                <button type="button" class="btn btn-fefault cart">
+                                <button type="button" class="btn btn-default cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
                                 </button>
@@ -56,6 +58,10 @@
                             <p><b>Available Quantity:</b> {{vm.product.NumberOfUnits}}</p>
                             <p><b>Condition:</b> Well</p>
                             <p ng-bind="vm.product.Description"></p>
+                            <button type="button" class="btn btn-default cart" style="margin-left: 0;">
+                                <i class="fa fa-arrow-circle-down"></i>
+                                Add to wishlist
+                            </button>
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
