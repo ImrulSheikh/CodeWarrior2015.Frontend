@@ -72,7 +72,7 @@ module Controllers {
                     });
 
                 }
-                console.log(pub.products[0]);
+                //console.log(pub.products[0]);
 
             }).fail(function (response) {
                 console.log('Error: ' + response);
