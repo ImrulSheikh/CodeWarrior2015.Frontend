@@ -1,13 +1,21 @@
 /// <reference path="../reference.ts" />
 
 module Controllers {
+
+    
     export class HomeController {
         private categoryServicve = new CategoryService();
         private $localStorage;
+        private $scope;
+        private categories: Array<Object>;
+
         constructor($scope, $rootScope, $localStorage) {
             $scope.vm = this;
+            this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.init();
+
+            
         }
 
         public init() {
@@ -26,11 +34,25 @@ module Controllers {
         }
 
         public callCategoryService() {
+            var pub = this;
             this.categoryServicve.getCategories().done(function (response) {
-                console.log(response);
+                
+                pub.categories = new Array<Object>();
+                for (var i = 0; i < response.length;i++)
+                {
+                    pub.$scope.$apply(function () {
+                        pub.categories.push(response[i]);
+                    });
+                    
+                }
+
+                pub.categories[0] = { Name: 'Cat 1' };
+                console.log(pub.categories);
+
+
             })
                 .fail(function (response) {
-
+                console.log('Error: ' + response);
             });
         }
     }
