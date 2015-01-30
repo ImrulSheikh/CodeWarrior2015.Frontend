@@ -29,9 +29,11 @@ module Controllers {
         private GetBuyerProfile()
         {
             var pub = this;
+            console.log(this.$localStorage.userName);
             this.accountService.getBuyerProfile(this.$localStorage.userName).done(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
+                    console.log(response);
                     if (response.length == 0) {
                         pub.buyerInfoMessage = 'No buying product found';
                     }
