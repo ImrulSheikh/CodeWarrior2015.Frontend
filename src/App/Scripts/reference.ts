@@ -16,8 +16,10 @@
 /// <reference path="controllers/homeController.ts" />
 /// <reference path="directives/testme.ts" />
 
+/// <reference path="services/global.ts" />
 /// <reference path="services/loginService.ts" />
 /// <reference path="services/accountService.ts" />
+/// <reference path="services/categoryService.ts" />
 
 
 /// <reference path="controllers/controllers.ts" />

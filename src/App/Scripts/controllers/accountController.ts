@@ -5,16 +5,18 @@ module Controllers {
         private accountService = new AccountService();
         private $scope;
         private $localStorage;
+        private $location;
         private profileEditMessage = '';
         private accountModel = {
             userName: '', fullName: '', sex: '',
             addressLine1: '', addressLine2: '', mobile: '',
             email: '', password: '', confirmPassword: ''
         };
-        constructor($scope, $rootScope, $localStorage) {
+        constructor($scope, $rootScope, $localStorage, $location) {
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
+            this.$location = $location;
             this.init();
         }
 
@@ -28,6 +30,10 @@ module Controllers {
                 
             }
         };
+
+        public buyerButtonClick() {
+            this.$location.path('/buyer');
+        }
 
         private callSaveProfileService() {
             var pub = this;
@@ -106,10 +112,7 @@ module Controllers {
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
             } else {
-                jQuery('#login-id').show();
-                jQuery('#logout-id').hide();
-                jQuery('#user-id').hide();
-                jQuery('#account-id').hide();
+                this.$location.path('/home');
             }
         }
     }
