@@ -61,11 +61,11 @@ var LoginService = (function () {
     function LoginService() {
     }
     LoginService.prototype.login = function (data) {
-        var loginUrl = "http://localhost:64237/Token";
+        var loginUrl = "http://localhost:41591/Token";
         return $.post(loginUrl, data);
     };
     LoginService.prototype.register = function (data) {
-        var registerUrl = "http://localhost:64237/api/account/register";
+        var registerUrl = "http://localhost:41591/api/account/register";
         return $.post(registerUrl, data);
     };
     return LoginService;
@@ -74,9 +74,11 @@ var AccountService = (function () {
     function AccountService() {
     }
     AccountService.prototype.getProfile = function (data) {
+        var getUrl = "http://localhost:64237/api/profile/get";
+        return $.post(getUrl, data);
     };
     AccountService.prototype.saveProfile = function (data) {
-        var saveUrl = "http://localhost:64237/api/profile/get";
+        var saveUrl = "http://localhost:64237/api/profile/save";
         return $.post(saveUrl, data);
     };
     return AccountService;
@@ -109,15 +111,7 @@ var Controllers;
             };
             this.validateProfileEdit = function () {
                 if (!this.accountModel.fullName) {
-                    this.profileEditMessage = 'name field is empty';
-                    return false;
-                }
-                if (!this.accountModel.sex || this.accountModel.sex == 'Sex') {
-                    this.profileEditMessage = 'please select sex';
-                    return false;
-                }
-                if (!this.accountModel.addressLine1) {
-                    this.profileEditMessage = 'address field is empty';
+                    this.profileEditMessage = 'user name field is empty';
                     return false;
                 }
                 if (!this.accountModel.mobile) {
@@ -136,6 +130,10 @@ var Controllers;
                     this.profileEditMessage = 'passowrd must be atleast 6 character/digit long';
                     return false;
                 }
+                if (this.accountModel.password != this.accountModel.confirmPassword) {
+                    this.signupMessage = 'passowrd not matched';
+                    return false;
+                }
                 return true;
             };
             $scope.vm = this;
@@ -149,7 +147,7 @@ var Controllers;
         };
         AccountController.prototype.callSaveProfileService = function () {
             var pub = this;
-            this.profileEditMessage = 'Registering..';
+            this.profileEditMessage = 'Updating..';
             var data = 'userName=' + this.accountModel.userName + '&password=' + this.accountModel.password + '&confirmPassword=' + this.accountModel.confirmPassword + '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex + "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 + '&phoneNumber=' + this.accountModel.mobile + '&emailAddress=' + this.accountModel.email;
             this.accountService.saveProfile(data).done(function (response) {
                 pub.$scope.$apply(function () {
@@ -170,6 +168,17 @@ var Controllers;
             this.accountModel.mobile = '34059834';
             this.accountModel.email = 'tbh.tilok@live.com';
             this.accountModel.password = 'cwcUser';
+            var pub = this;
+            var data = 'userName=' + this.$localStorage.userName;
+            this.accountService.getProfile(data).done(function (response) {
+                pub.$scope.$apply(function () {
+                    pub.profileEditMessage = 'Saved successfully';
+                });
+            }).fail(function (response) {
+                pub.$scope.$apply(function () {
+                    pub.profileEditMessage = 'Error while saving profile information';
+                });
+            });
         };
         AccountController.prototype.checkLoginStatus = function () {
             if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
@@ -242,7 +251,7 @@ var Controllers;
         };
         LoginController.prototype.callLoginService = function (userName, password, confirmPassowrd) {
             var pub = this;
-            this.loginMessage = 'log in..';
+            this.loginMessage = 'logging in..';
             var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd + '&grant_type=password';
             this.loginServicve.login(data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
@@ -261,12 +270,14 @@ var Controllers;
             var pub = this;
             this.signupMessage = 'Registering..';
             var data = 'userName=' + this.signupModel.userName + '&password=' + this.signupModel.password + '&confirmPassword=' + this.signupModel.confirmPassword + '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex + "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 + '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
-            this.loginServicve.login(data).done(function (response) {
+            this.loginServicve.register(data).done(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.clearRegisterModel();
-                    pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                    pub.signupMessage = 'Registration successful';
                 });
             }).fail(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.signupMessage = 'Invalid request, please check all the fields again';
                 });
@@ -285,19 +296,11 @@ var Controllers;
         };
         LoginController.prototype.validateSingup = function () {
             if (!this.signupModel.userName) {
-                this.signupMessage = 'name field is empty';
+                this.signupMessage = 'user name field is empty';
                 return false;
             }
             if (!this.signupModel.fullName) {
                 this.signupMessage = 'name field is empty';
-                return false;
-            }
-            if (!this.signupModel.sex || this.signupModel.sex == 'Sex') {
-                this.signupMessage = 'please select sex';
-                return false;
-            }
-            if (!this.signupModel.addressLine1) {
-                this.signupMessage = 'address field is empty';
                 return false;
             }
             if (!this.signupModel.mobile) {

@@ -56,7 +56,7 @@ module Controllers {
 
         private callLoginService(userName, password, confirmPassowrd) {
             var pub = this;
-            this.loginMessage = 'log in..';
+            this.loginMessage = 'logging in..';
             var data = 'userName=' + userName + '&password=' + password + '&confirmPassword=' + confirmPassowrd + '&grant_type=password';
             this.loginServicve.login(data).done(function (response) {
                 pub.$localStorage.accessToken = response.access_token;
@@ -80,12 +80,14 @@ module Controllers {
                 '&fullName=' + this.signupModel.fullName + '&sex=' + this.signupModel.sex +
                 "&address=" + this.signupModel.addressLine1 + '|' + this.signupModel.addressLine2 +
                 '&phoneNumber=' + this.signupModel.mobile + '&emailAddress=' + this.signupModel.email;
-            this.loginServicve.login(data).done(function (response) {
+            this.loginServicve.register(data).done(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.clearRegisterModel();
-                    pub.signupMessage = 'Please login to your email address for registration cofirmation';
+                    pub.signupMessage = 'Registration successful';
                 });
             }).fail(function (response) {
+                console.log(response);
                 pub.$scope.$apply(function () {
                     pub.signupMessage = 'Invalid request, please check all the fields again';
                 });
@@ -106,19 +108,11 @@ module Controllers {
 
         private validateSingup() {
             if (!this.signupModel.userName) {
-                this.signupMessage = 'name field is empty';
+                this.signupMessage = 'user name field is empty';
                 return false;
             }
             if (!this.signupModel.fullName) {
                 this.signupMessage = 'name field is empty';
-                return false;
-            }
-            if (!this.signupModel.sex || this.signupModel.sex == 'Sex') {
-                this.signupMessage = 'please select sex';
-                return false;
-            }
-            if (!this.signupModel.addressLine1) {
-                this.signupMessage = 'address field is empty';
                 return false;
             }
             if (!this.signupModel.mobile) {
