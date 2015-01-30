@@ -263,6 +263,7 @@
     <TypeScriptCompile Include="App\Scripts\main.ts" />
     <TypeScriptCompile Include="App\Scripts\reference.ts" />
     <TypeScriptCompile Include="App\Scripts\services\accountService.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\productService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\categoryService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\global.ts" />
     <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
