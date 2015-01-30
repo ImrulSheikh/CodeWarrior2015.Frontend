@@ -102,6 +102,7 @@
     <Content Include="App\Templates\account.html" />
     <Content Include="App\Templates\home.html" />
     <Content Include="App\Templates\login.html" />
+    <Content Include="App\Templates\buyerProfile.html" />
     <Content Include="Assets\Images\readme.txt" />
     <Content Include="App\Styles\Images\samsung-s5.jpg" />
     <Content Include="App\Styles\Images\samsung-s5.png" />
@@ -238,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\Scripts\controllers\accountController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\buyerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\loginController.ts" />
@@ -250,6 +252,8 @@
     <TypeScriptCompile Include="App\Scripts\main.ts" />
     <TypeScriptCompile Include="App\Scripts\reference.ts" />
     <TypeScriptCompile Include="App\Scripts\services\accountService.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\categoryService.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\global.ts" />
     <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\services.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular-ui-router.d.ts" />
