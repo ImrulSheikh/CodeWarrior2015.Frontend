@@ -5,8 +5,9 @@ angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.
         $routeProvider.
             when('/home', { templateUrl: 'App/Templates/home.html', controller: 'HomeController' }).
             when('/login', { templateUrl: 'App/Templates/login.html', controller: 'LoginController' }).
-            when('/account/:id', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).
+            when('/account', { templateUrl: 'App/Templates/account.html', controller: 'AccountController' }).
             when('/buyer', { templateUrl: 'App/Templates/buyerProfile.html', controller: 'BuyerProfileController' }).
+            when('/seller', { templateUrl: 'App/Templates/sellerProfile.html', controller: 'SellerProfileController' }).
             otherwise({ redirectTo: '/home' });
         //$locationProvider.html5Mode(true);
     }]);

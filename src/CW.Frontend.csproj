@@ -100,6 +100,7 @@
     <Content Include="App\Styles\Images\lumia-925.jpg" />
     <Content Include="App\Styles\Images\readme.txt" />
     <Content Include="App\Templates\account.html" />
+    <Content Include="App\Templates\sellerProfile.html" />
     <Content Include="App\Templates\home.html" />
     <Content Include="App\Templates\login.html" />
     <Content Include="App\Templates\buyerProfile.html" />
@@ -202,6 +203,13 @@
     <Content Include="Assets\Libraries\css\readme.txt" />
     <Content Include="Assets\Libraries\js\readme.txt" />
     <Content Include="Assets\Scripts\angular-route.js" />
+    <Content Include="Assets\Scripts\eShopper\bootstrap.min.js" />
+    <Content Include="Assets\Scripts\eShopper\contact.js" />
+    <Content Include="Assets\Scripts\eShopper\html5shiv.js" />
+    <Content Include="Assets\Scripts\eShopper\jquery.prettyPhoto.js" />
+    <Content Include="Assets\Scripts\eShopper\jquery.scrollUp.min.js" />
+    <Content Include="Assets\Scripts\eShopper\main.js" />
+    <Content Include="Assets\Scripts\eShopper\price-range.js" />
     <Content Include="Assets\Scripts\helper.js" />
     <Content Include="Assets\Scripts\ngStorage.js" />
     <Content Include="Assets\Scripts\out.js" />
@@ -239,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\Scripts\controllers\accountController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\sellerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\buyerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\controllers.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\homeController.ts" />

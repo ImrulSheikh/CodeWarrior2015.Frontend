@@ -21,6 +21,7 @@ module Controllers {
         }
 
         public init() {
+            jQuery('#home-id').removeClass('active');
             this.checkLoginStatus();
             this.callGetProfileService();
         }
@@ -33,6 +34,10 @@ module Controllers {
 
         public buyerButtonClick() {
             this.$location.path('/buyer');
+        }
+
+        public sellerButtonClick() {
+            this.$location.path('/seller');
         }
 
         private callSaveProfileService() {
@@ -107,6 +112,7 @@ module Controllers {
 
         private checkLoginStatus() {
             if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
+                jQuery('#user-id a').text(this.$localStorage.userName);
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
                 jQuery('#user-id').show();

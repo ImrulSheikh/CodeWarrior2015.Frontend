@@ -8,7 +8,7 @@ module Controllers {
         private $location;
         private loginMessage = '';
         private signupMessage = '';
-        private loginModel = { userName: 'tilok369', password: '' };
+        private loginModel = { userName: 'tanjeer369', password: 'tanjeer369' };
         private signupModel = {
             userName: '', fullName: '', sex: '',
             addressLine1: '', addressLine2: '', mobile: '',
@@ -26,6 +26,7 @@ module Controllers {
         }
 
         public init() {
+            jQuery('#home-id').removeClass('active');
             if (this.$localStorage.accessToken && this.$localStorage.accessToken != 'null') {
                 jQuery('#login-id').hide();
                 jQuery('#logout-id').show();
@@ -36,7 +37,7 @@ module Controllers {
                 jQuery('#logout-id').hide();
                 jQuery('#user-id').hide();
                 jQuery('#account-id').hide();
-            }
+            } 
         }
 
         public login() {
@@ -119,6 +120,10 @@ module Controllers {
                 this.signupMessage = 'mobile number field is empty';
                 return false;
             }
+            if (!this.checkPhoneNumber(this.signupModel.mobile)) {
+                this.signupMessage = 'invalid mobile number';
+                return false;
+            }
             if (!this.signupModel.email) {
                 this.signupMessage = 'email field is empty';
                 return false;
@@ -155,8 +160,16 @@ module Controllers {
             jQuery('#logout-id').show();
             jQuery('#user-id').show();
             jQuery('#account-id').show();
-            jQuery('#account-id a').attr('href', '#/account/' + this.$localStorage.userName);
             jQuery('#user-id a').text(this.$localStorage.userName);
+        }
+
+        private checkPhoneNumber(phone:string)
+        {
+            var regex = /^[\d\.\-]+$/;
+            if (!regex.test(phone)) {
+                return false;
+            }
+            return true;
         }
     }
 }

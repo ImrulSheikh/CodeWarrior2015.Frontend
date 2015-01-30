@@ -10,6 +10,7 @@ namespace CW.Frontend.AppServer.Start {
 
         private static void RegisterScripts(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/Assets/Scripts").IncludeDirectory("~/Assets/Scripts", "*.js", true));
+            bundles.Add(new ScriptBundle("~/Assets/Scripts/eShopper").IncludeDirectory("~/Assets/Scripts/eShopper", "*.js", true));
         }
 
         private static void RegisterStyles(BundleCollection bundles) {
