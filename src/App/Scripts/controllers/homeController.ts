@@ -12,6 +12,8 @@ module Controllers {
         private categories: Array<Object>;
         private products: Array<Object>;
 
+        private properties: Array<Object>;
+
         constructor($scope, $rootScope, $localStorage) {
             $scope.vm = this;
             this.$scope = $scope;
@@ -62,6 +64,8 @@ module Controllers {
                 console.log('Error: ' + response);
             });
         }
+
+
         public callProductService(catId) {
             var pub = this;
             
@@ -75,6 +79,31 @@ module Controllers {
 
                 }
                 //console.log(pub.products[0]);
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
+        }
+
+
+
+
+
+
+        public getAttribute(catId) {
+            var pub = this;
+            this.categoryServicve.getCategoryAttribute(catId).done(function (response) {
+
+                pub.properties = new Array<Object>();
+                for (var i = 0; i < response.length; i++) {
+                    pub.$scope.$apply(function () {
+                        pub.properties.push(response[i]);
+                    });
+                }
+
+                console.log('attr');
+                console.log(pub.properties[0]);
+
 
             }).fail(function (response) {
                 console.log('Error: ' + response);
