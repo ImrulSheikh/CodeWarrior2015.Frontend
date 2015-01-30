@@ -2,6 +2,8 @@
 
 module Controllers {
     export class SellerProfileController {
+        private accountService = new AccountService();
+        private sellerInfoMessage = '';
         private $scope;
         private $localStorage;
         private $location;
@@ -17,9 +19,30 @@ module Controllers {
 
         public init() {
             this.checkLoginStatus();
-            this.sellerInfoList = new Array<Object>();
-            this.sellerInfoList[0] = { Name: 'Product 1', Price: 100, Quantity: 1 };
-            this.sellerInfoList[1] = { Name: 'Product 2', Price: 200, Quantity: 2 };
+            this.GetSellerProfile();
+        }
+
+        private GetSellerProfile() {
+            var pub = this;
+            this.accountService.getSellerProfile(this.$localStorage.userName).done(function (response) {
+                console.log(response);
+                pub.$scope.$apply(function () {
+                    if (response.length == 0) {
+                        pub.sellerInfoMessage = 'No buying product found';
+                    }
+                    else {
+                        pub.sellerInfoList = new Array<Object>();
+                        for (var i = 0; i < response.length; i++) {
+                            pub.sellerInfoList.push(response[i]);
+                        }
+                    }
+                });
+            }).fail(function (response) {
+                console.log(response);
+                pub.$scope.$apply(function () {
+                    pub.sellerInfoMessage = 'Error while getting buying information';
+                });
+            });
         }
 
         private checkLoginStatus() {
