@@ -18,6 +18,7 @@ module Controllers {
         }
 
         public init() {
+            jQuery('#home-id').removeClass('active');
             this.checkLoginStatus();
             this.GetSellerProfile();
         }

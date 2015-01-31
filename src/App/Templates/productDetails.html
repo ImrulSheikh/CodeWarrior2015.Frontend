@@ -58,7 +58,7 @@
                             <p><b>Available Quantity:</b> {{vm.product.NumberOfUnits}}</p>
                             <p><b>Condition:</b> Well</p>
                             <p ng-bind="vm.product.Description"></p>
-                            <button type="button" class="btn btn-default cart" style="margin-left: 0;">
+                            <button type="button" class="btn btn-default cart" style="margin-left: 0;" ng-click="vm.AddToWishlist(vm.product.Id)">
                                 <i class="fa fa-arrow-circle-down"></i>
                                 Add to wishlist
                             </button>

@@ -26,6 +26,7 @@ module Controllers {
         }
 
         public init() {
+            jQuery('#home-id').removeClass('active');
             console.log(this.productId);
             this.checkLoginStatus();
             this.GetCategories();
@@ -79,6 +80,10 @@ module Controllers {
                 pub.buyerInfoMessage = 'Error while getting category information';
                 console.log('Error: ' + response);
             });
+        }
+
+        public AddToWishlist(id)
+        {
         }
 
         private checkLoginStatus() {

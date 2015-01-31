@@ -43,15 +43,17 @@ module Controllers {
         private callSaveProfileService() {
             var pub = this;
             this.profileEditMessage = 'Updating..';
-            //var data = 'userName=' + this.accountModel.userName + '&password=' + this.accountModel.password +
-            //    '&confirmPassword=' + this.accountModel.confirmPassword +
-            //    '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex +
+            //var data = 'fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex +
             //    "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 +
             //    '&phoneNumber=' + this.accountModel.mobile + '&email=' + this.accountModel.email;
-            var data = 'userName=' + this.accountModel.userName + 
-                '&fullName=' + this.accountModel.fullName + '&sex=' + this.accountModel.sex +
-                "&address=" + this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2 +
-                '&phoneNumber=' + this.accountModel.mobile + '&email=' + this.accountModel.email;
+            var data = {
+                "FullName": this.accountModel.fullName,
+                "Sex": this.accountModel.sex,
+                "Address": this.accountModel.addressLine1 + '|' + this.accountModel.addressLine2,
+                "PhoneNumber": this.accountModel.mobile,
+                "Email": this.accountModel.email
+            };
+
             this.accountService.saveProfile(data, this.$localStorage.accessToken).done(function (response) {
                 pub.$scope.$apply(function () {
                     pub.profileEditMessage = 'Saved successfully';
