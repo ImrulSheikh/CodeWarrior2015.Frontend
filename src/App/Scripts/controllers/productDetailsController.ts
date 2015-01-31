@@ -4,6 +4,7 @@ module Controllers {
     export class ProductDetailsController {
         private categoryServicve = new CategoryService();
         private prooductService = new ProductService();
+        private wishlistService = new WishlistService();
         private $scope;
         private $localStorage;
         private $location;
@@ -49,6 +50,17 @@ module Controllers {
         {
             this.$localStorage.catId = id;
             this.$location.path('/home');
+        }
+
+        public callWishlistService(id) {
+            var pub = this;
+            this.wishlistService.addToWishlist(id, this.$localStorage.accessToken).done(function (response) {
+
+                alert(response);
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
         }
 
         private GetCategories() {

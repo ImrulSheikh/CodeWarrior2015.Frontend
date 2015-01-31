@@ -28,6 +28,7 @@ module Controllers {
             jQuery('#account-id').hide();
             jQuery('#user-id').hide();
             jQuery('#wishlist-id').hide();
+            this.$location.path('/home');
         }
 
         private checkLoginStatus() {
