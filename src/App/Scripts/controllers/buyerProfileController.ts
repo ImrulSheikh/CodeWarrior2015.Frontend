@@ -27,6 +27,11 @@ module Controllers {
             this.GetBuyerProfile();
         }
 
+        public GotoCategoryPage(id) {
+            this.$localStorage.catId = id;
+            this.$location.path('/home');
+        }
+
         private GetBuyerProfile()
         {
             var pub = this;

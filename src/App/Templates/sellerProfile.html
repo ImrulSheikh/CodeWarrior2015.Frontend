@@ -3,30 +3,55 @@
         <div class="breadcrumbs">
             <ol class="breadcrumb">
                 <li><a href="#/home">Home</a></li>
-                <li class="active">Selling Information</li>
+                <li class="active">Seller Information</li>
             </ol>
         </div>
-        <div class="table-responsive cart_info">
+        <div>
             <label class="text-danger" ng-bind="vm.sellerInfoMessage"></label>
+            <h2>Seller Information</h2>
+            <table class="table">
+                <tr>
+                    <td>
+                        <h4>Name: {{vm.sellerInfoList.User.FullName}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Address: {{vm.sellerInfoList.User.Address}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Mobile: {{vm.sellerInfoList.User.PhoneNumber}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Rating: {{vm.sellerInfoList.Rating}}</h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="description">Category</td>
                         <td class="description">Name</td>
+                        <td class="description"></td>
                         <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="sellInfo in vm.sellerInfoList">
-                        <td class="cart_description" style="width: 40%;">
-                            <h4>{{sellInfo.CategoryName}}</h4>
+                    <tr ng-repeat="sellInfo in vm.sellerInfoList.Products">
+                        <td class="cart_description" style="width: 30%;">
+                            <h4>{{sellInfo.Name}}</h4>
                         </td>
-                        <td class="cart_description" style="width: 40%;">
-                            <h4><a href="">{{sellInfo.Name}}</a></h4>
+                        <td class="cart_description" style="width: 50%;">
+                            <img style="width: 200px; height: 180px;" src="{{sellInfo.ImagePaths[0]}}" alt="" />
                         </td>
                         <td class="cart_price" style="width: 10%;">
-                            <p>৳ {{sellInfo.Price}}</p>
+                            <p>৳ {{sellInfo.UnitPrice}}</p>
                         </td>
                         <td class="cart_quantity" style="width: 10%;">
                             <div class="cart_quantity_button">

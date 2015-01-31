@@ -10,7 +10,7 @@
                         <div class="panel panel-default" ng-repeat="cat in vm.categories">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" ng-href="#{{cat.Name}}">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="javascript:void(0)" ng-click="vm.GotoCategoryPage(cat.Id)">
                                         <span class="badge pull-right"></span>
                                         {{cat.Name}}
                                     </a>
@@ -19,8 +19,8 @@
                             <div id="{{cat.Name}}" class="">
                                 <div class="panel-body">
                                     <ul>
-                                        <li ng-repeat="subcategory in cat.SubCategories" ng-click="vm.callProductService(cat.Id,subcategory.Id)">
-                                            <a href="#">{{subcategory.Name}}</a>
+                                        <li ng-repeat="subcategory in cat.SubCategories">
+                                            <a href="javascript:void(0)" ng-click="vm.GotoCategoryPage(subcategory.Id)">{{subcategory.Name}}</a>
                                         </li>
 
                                     </ul>
@@ -38,7 +38,7 @@
                     <!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="/App/Styles/Images/samsung-s5.png" alt="" />
+                            <img src="{{vm.product.ImagePaths[0]}}" alt="" />
                         </div>
 
                     </div>
@@ -62,6 +62,10 @@
                                 <i class="fa fa-arrow-circle-down"></i>
                                 Add to wishlist
                             </button>
+                            <a class="btn btn-default cart" style="margin-left: 0;" href="#/seller/{{vm.product.Id}}">
+                                <i class="fa fa-user"></i>
+                                View Seller
+                            </a>
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
@@ -80,19 +84,21 @@
                                     <p><b>Rating: </b>{{cmnt.StarRating}} stars</p>
                                     <p>{{cmnt.Comment}}</p>
                                 </div>
-                                
-                                <p><b>Write Your Review</b></p>
+                                <div style="{{vm.isReview}}">
 
-                                <form action="#">
-                                    <span>
-                                        <input type="text" placeholder="Your Name" />
-                                        <input type="email" placeholder="Email Address" />
-                                    </span>
-                                    <textarea name=""></textarea>
-                                    <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
-                                </form>
+                                    <p><b>Write Your Review</b></p>
+
+                                    <form>
+                                        <span>
+                                            <input type="text" placeholder="Your Name" />
+                                            <input type="email" placeholder="Email Address" />
+                                        </span>
+                                        <textarea name=""></textarea>
+                                        <button type="button" class="btn btn-default pull-right">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div><!--/category-tab-->

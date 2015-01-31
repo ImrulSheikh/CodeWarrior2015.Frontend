@@ -10,6 +10,7 @@ module Controllers {
         private buyerInfoMessage = '';
         private categoryInfoMessage = '';
         private productId;
+        private isReview = '';
         private product: Object;
         private buyInfoList: Array<Object>;
         private categories: Array<Object>;
@@ -22,6 +23,14 @@ module Controllers {
             this.$localStorage = $localStorage;
             this.$location = $location;
             this.productId = $routeParams.id;
+            this.isReview = $routeParams.isReview;
+            if ($routeParams.isReview == 'false')
+            {
+                this.isReview = 'display: none';
+                console.log('v' + this.isReview);
+            }     
+            else 
+                console.log('b' + false);
             this.init();
         }
 
@@ -32,6 +41,12 @@ module Controllers {
             this.GetCategories();
             this.GetProductDetails();
             this.GetComments();
+        }
+
+        public GotoCategoryPage(id)
+        {
+            this.$localStorage.catId = id;
+            this.$location.path('/home');
         }
 
         private GetCategories() {
