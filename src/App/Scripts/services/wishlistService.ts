@@ -21,4 +21,15 @@
         });
     }
 
+    public deletFromWishlist(id, accessToken) {
+        var url = new Constant().apiRoot + "/api/Wishlist/Delete/" + id;
+        return $.ajax(url, {
+            type: "POST",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + accessToken
+            }
+        });
+    }
+
 } 

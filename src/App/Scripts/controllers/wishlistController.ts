@@ -12,9 +12,8 @@ module Controllers {
         private productId;
         private product: Object;
         
-        private : Array<Object>;
-wishlistProducts
-
+        private wishlistProducts : Array<Object>;
+        
         constructor($scope, $rootScope, $localStorage, $location, $routeParams) {
             $scope.vm = this;
             this.$scope = $scope;
@@ -35,10 +34,6 @@ wishlistProducts
             var pub = this;
             this.wishlistService.getWishlist(this.$localStorage.accessToken).done(function (response) {
                 
-                //response = {};
-                //var prod = [{ Name: "N1", Price: 100, Id: 0 }, { Name: "N1", Price: 100, Id: 2 }];
-                //response.Products = prod;
-
                 pub.wishlistProducts = new Array<Object>();
                 for (var i = 0; i < response.Products.length; i++) {
                     pub.$scope.$apply(function () {
@@ -47,19 +42,20 @@ wishlistProducts
                 }
             }).fail(function (response) {
                 pub.message = 'Error ' + response;
-                console.log('Error: ' + response);
-
-                //response = {};
-                //var prod = [{ Name: "N1", Price: 100, Id: 0 }, { Name: "N1", Price: 100, Id: 2 }];
-                //response.Products = prod;
-
-                //pub.wishlistProducts = new Array<Object>();
-                //for (var i = 0; i < response.Products.length; i++) {
-                //    pub.$scope.$apply(function () {
-                //        pub.wishlistProducts.push(response.Products[i]);
-                //    });
-                //}
             });
+        }
+
+        private DeleteWishlist(productId) {
+            var pub = this;
+            this.wishlistService.deletFromWishlist(productId,this.$localStorage.accessToken).done(function (response) {
+
+                pub.message = response;
+
+            }).fail(function (response) {
+                pub.message = 'Error ' + response;
+                });
+
+            //window.location.reload();
         }
 
        
