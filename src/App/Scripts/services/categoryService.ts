@@ -9,4 +9,9 @@
         return $.get(getUrl);
     }
 
+    public getSubCategory(catId) {
+        var getUrl = new Constant().apiRoot + "/api/Categories/GetSubCategories/" + catId;
+        return $.get(getUrl);
+    }
+
 } 

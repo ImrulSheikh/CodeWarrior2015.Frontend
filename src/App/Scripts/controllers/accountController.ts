@@ -115,6 +115,7 @@ module Controllers {
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
                 jQuery('#add-product-id').show();
+                jQuery('#wishlist-id').show();
             } else {
                 this.$location.path('/home');
                 jQuery('#add-product-id').hide();

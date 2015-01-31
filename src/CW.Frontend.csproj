@@ -101,12 +101,12 @@
     <Content Include="App\Styles\Images\readme.txt" />
     <Content Include="App\Templates\account.html" />
     <Content Include="App\Templates\addProduct.html" />
-    <Content Include="App\Templates\wishlist.html" />
     <Content Include="App\Templates\productDetails.html" />
     <Content Include="App\Templates\sellerProfile.html" />
     <Content Include="App\Templates\home.html" />
     <Content Include="App\Templates\login.html" />
     <Content Include="App\Templates\buyerProfile.html" />
+    <Content Include="App\Templates\wishlist.html" />
     <Content Include="Assets\Images\readme.txt" />
     <Content Include="App\Styles\Images\samsung-s5.jpg" />
     <Content Include="App\Styles\Images\samsung-s5.png" />
@@ -219,6 +219,7 @@
     <Content Include="Assets\Scripts\modernizr-2.8.3.js" />
     <Content Include="Assets\Scripts\ngStorage.js" />
     <Content Include="Assets\Scripts\out.js" />
+    <Content Include="Assets\Scripts\upload-image.js" />
     <Content Include="Assets\Styles\Images\readme.txt" />
     <Content Include="Assets\Styles\Test.css" />
     <Content Include="Assets\Styles\Test.min.css">
@@ -255,7 +256,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\Scripts\controllers\accountController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\addProductController.ts" />
-    <TypeScriptCompile Include="App\Scripts\controllers\wishlistController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\productDetailsController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\sellerProfileController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\buyerProfileController.ts" />
@@ -265,6 +265,7 @@
     <TypeScriptCompile Include="App\Scripts\controllers\logoutController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\MainController.ts" />
     <TypeScriptCompile Include="App\Scripts\controllers\TestController.ts" />
+    <TypeScriptCompile Include="App\Scripts\controllers\wishlistController.ts" />
     <TypeScriptCompile Include="App\Scripts\directives\directives.ts" />
     <TypeScriptCompile Include="App\Scripts\directives\testme.html.ts" />
     <TypeScriptCompile Include="App\Scripts\directives\testme.ts" />
@@ -274,9 +275,9 @@
     <TypeScriptCompile Include="App\Scripts\services\categoryService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\global.ts" />
     <TypeScriptCompile Include="App\Scripts\services\loginService.ts" />
-    <TypeScriptCompile Include="App\Scripts\services\wishlistService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\productService.ts" />
     <TypeScriptCompile Include="App\Scripts\services\services.ts" />
+    <TypeScriptCompile Include="App\Scripts\services\wishlistService.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="App\Scripts\typings\angularjs\angularLocalStorage.d.ts" />
@@ -326,7 +327,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>36326</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

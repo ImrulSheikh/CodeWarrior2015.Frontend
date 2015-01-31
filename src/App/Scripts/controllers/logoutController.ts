@@ -27,10 +27,7 @@ module Controllers {
             jQuery('#logout-id').hide();
             jQuery('#account-id').hide();
             jQuery('#user-id').hide();
-
             jQuery('#wishlist-id').hide();
-            jQuery('#checkout-id').hide();
-            jQuery('#cart-id').hide();
         }
 
         private checkLoginStatus() {
@@ -41,7 +38,6 @@ module Controllers {
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
                 jQuery('#add-product-id').show();
-
                 jQuery('#wishlist-id').show();
 
 
