@@ -9,12 +9,13 @@ module Controllers {
 
         private $localStorage;
         private $scope;
+        private categoryId = 2;
         private categories: Array<Object>;
         private products: Array<Object>;
 
         private properties: Array<Object>;
 
-        constructor($scope, $rootScope, $localStorage) {
+        constructor($scope, $rootScope, $localStorage, $routeParams) {
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
@@ -22,6 +23,11 @@ module Controllers {
         }
 
         public init() {
+            if (this.$localStorage.catId) {
+                this.categoryId = this.$localStorage.catId;
+            }
+            console.log('cate:' + this.categoryId);
+            console.log('cate:' + this.$localStorage.catId);
             jQuery('#home-id').removeClass('active');
             jQuery('#home-id').addClass('active');
             this.checkLoginStatus();
@@ -69,7 +75,7 @@ module Controllers {
         public callProductService(catId) {
             if (catId == -1)
             {
-                catId = 2
+                catId = this.categoryId;
             }
                
             var pub = this;

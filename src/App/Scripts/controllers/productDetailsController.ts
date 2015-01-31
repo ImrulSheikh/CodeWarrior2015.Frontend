@@ -34,6 +34,12 @@ module Controllers {
             this.GetComments();
         }
 
+        public GotoCategoryPage(id)
+        {
+            this.$localStorage.catId = id;
+            this.$location.path('/home');
+        }
+
         private GetCategories() {
             var pub = this;
             this.categoryServicve.getCategories().done(function (response) {

@@ -25,13 +25,13 @@
     }
 
     public getBuyerProfile(userName) {
-        var getUrl = new Constant().apiRoot + "/api/Profiles/GetBuyerProfile?userName=" + userName;
+        var getUrl = new Constant().apiRoot + "/api/Profiles/GetBuyerProfile/" + userName;
 
         return $.get(getUrl);
     }
 
     public getSellerProfile(userName) {
-        var getUrl = new Constant().apiRoot + "/api/Profiles/GetSellerProfile?userName=" + userName;
+        var getUrl = new Constant().apiRoot + "/api/Profiles/GetSellerProfile/" + userName;
 
         return $.get(getUrl);
     }

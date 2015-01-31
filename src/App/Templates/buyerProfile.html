@@ -16,17 +16,19 @@
                         <div class="panel panel-default" ng-repeat="cat in vm.categories">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" ng-href="#/productDetails/{{cat.Name}}">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                    <a data-toggle="collapse" data-parent="#accordian" href="javascript:void(0)" ng-click="vm.GotoCategoryPage(cat.Id)">
+                                        <span class="badge pull-right"></span>
                                         {{cat.Name}}
                                     </a>
                                 </h4>
                             </div>
-                            <div id="{{cat.Name}}" class="panel-collapse collapse">
+                            <div id="{{cat.Name}}" class="">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Sample Subcategory 1 </a></li>
-                                        <li><a href="#">Sample Subcategory 2 </a></li>
+                                        <li ng-repeat="subcategory in cat.SubCategories">
+                                            <a href="javascript:void(0)" ng-click="vm.GotoCategoryPage(subcategory.Id)">{{subcategory.Name}}</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -42,31 +44,42 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="description">Category</td>
-                                <td class="description">Name</td>
-                                <td class="price">Price</td>
-                                <td class="quantity">Quantity</td>
+                                <td class="description">Order Description</td>
+                                <td class="description">Product Name
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit Price</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="buyInfo in vm.buyInfoList">
-                                <td class="cart_description" style="width: 40%;">
-                                    <h4>{{buyInfo.CategoryName}}</h4>
+                                <td class="cart_description" style="width: 30%;">
+                                    <h4>Date: {{buyInfo.OrderDate}}</h4>
+                                    <h4>Quantity: {{buyInfo.Quantity}}</h4>
+                                    <h4>Total Price: ৳ {{buyInfo.TotalPrice}}</h4>
                                 </td>
-                                <td class="cart_description" style="width: 40%;">
-                                    <h4><a href="#">{{buyInfo.Name}}</a></h4>
-                                </td>
-                                <td class="cart_price" style="width: 10%;">
-                                    <p>৳ {{buyInfo.Price}}</p>
-                                </td>
-                                <td class="cart_quantity" style="width: 10%;">
-                                    <div class="cart_quantity_button">
-                                        <p>{{buyInfo.NumberOfUnits}}</p>
-                                    </div>
+                                <td class="cart_description" style="width: 70%;">
+                                    <table class="table table-condensed">
+                                        <tbody>
+                                            <tr ng-repeat="buy in buyInfo.Products">
+                                                <td class="cart_description" style="width: 60%;">
+                                                    <h4><a ng-href="#/productDetails/{{buy.Id}}">{{buy.Name}}</a></h4>
+                                                </td>
+                                                <td class="cart_price" style="width: 20%;">
+                                                    <p>৳ {{buy.UnitPrice}}</p>
+                                                </td>
+                                                <td class="cart_quantity" style="width: 20%;">
+                                                    <div class="cart_quantity_button">
+                                                        <p>{{buy.NumberOfUnits}}</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> 
                 </div>
             </div>
         </div>

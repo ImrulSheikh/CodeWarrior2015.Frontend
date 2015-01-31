@@ -10,7 +10,7 @@
                         <div class="panel panel-default" ng-repeat="cat in vm.categories">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" ng-href="#{{cat.Name}}">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="javascript:void(0)" ng-click="vm.GotoCategoryPage(cat.Id)">
                                         <span class="badge pull-right"></span>
                                         {{cat.Name}}
                                     </a>
@@ -19,8 +19,8 @@
                             <div id="{{cat.Name}}" class="">
                                 <div class="panel-body">
                                     <ul>
-                                        <li ng-repeat="subcategory in cat.SubCategories" ng-click="vm.callProductService(cat.Id,subcategory.Id)">
-                                            <a href="#">{{subcategory.Name}}</a>
+                                        <li ng-repeat="subcategory in cat.SubCategories">
+                                            <a href="javascript:void(0)" ng-click="vm.GotoCategoryPage(subcategory.Id)">{{subcategory.Name}}</a>
                                         </li>
 
                                     </ul>
@@ -38,7 +38,7 @@
                     <!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="/App/Styles/Images/samsung-s5.png" alt="" />
+                            <img src="{{vm.product.ImagePaths[0]}}" alt="" />
                         </div>
 
                     </div>
