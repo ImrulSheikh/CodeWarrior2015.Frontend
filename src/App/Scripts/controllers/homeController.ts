@@ -121,7 +121,7 @@ module Controllers {
 
         public callWishlistService(id) {
             var pub = this;
-            this.wishlistService.addToWishlist(id).done(function (response) {
+            this.wishlistService.addToWishlist(id, this.$localStorage.accessToken).done(function (response) {
 
                 alert(response);
 

@@ -1,34 +1,49 @@
-﻿<div class="col-sm-9">
-    <div class="table-responsive cart_info">
-        <table class="table table-condensed">
-            <thead>
-                <tr class="cart_menu">
-                    <td class="description">Category</td>
-                    <td class="description">Name</td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="buyInfo in vm.buyInfoList">
-                    <td class="cart_description" style="width: 40%;">
-                        <h4>{{buyInfo.CategoryName}}</h4>
-                    </td>
-                    <td class="cart_description" style="width: 40%;">
-                        <h4><a href="#">{{buyInfo.Name}}</a></h4>
-                    </td>
-                    <td class="cart_price" style="width: 10%;">
-                        <p>৳ {{buyInfo.Price}}</p>
-                    </td>
-                    <td class="cart_quantity" style="width: 10%;">
-                        <div class="cart_quantity_button">
-                            <p>{{buyInfo.NumberOfUnits}}</p>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+﻿<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                   
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="table-responsive cart_info">
+                    <label class="text-danger" ng-bind="vm.message"></label>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="description">Product</td>
+                                <td class="description">Price</td>
+                                <td class="price">Detail</td>
+                                <td class="quantity">Delete</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in vm.wishlistProducts">
+                                <td class="cart_description" style="width: 40%;">
+                                    <h4>{{product.Name}}</h4>
+                                </td>
+                                <td class="cart_description" style="width: 40%;">
+                                    <h4><a href="#">{{product.UnitPrice}}</a></h4>
+                                </td>
+                                <td class="cart_price" style="width: 10%;">
+                                    <p>৳ {{product.Id}}</p>
+                                </td>
+                                <td class="cart_quantity" style="width: 10%;">
+                                    <div class="cart_quantity_button">
+                                        <p>{{product.Id}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-
+</section>

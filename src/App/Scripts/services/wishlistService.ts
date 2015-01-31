@@ -1,12 +1,24 @@
 ﻿class WishlistService {
-    public getWishlist() {
+    public getWishlist(accessToken) {
         var url = new Constant().apiRoot + "/api/Wishlist/GetCurrent";
-        return $.get(url);
+        return $.ajax(url, {
+            type: "GET",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + accessToken
+            }
+        });
     }
 
-    public addToWishlist(id) {
+    public addToWishlist(id, accessToken) {
         var url = new Constant().apiRoot + "/api/Wishlist/Add/?productId=" + id;
-        return $.post(url);
+        return $.ajax(url, {
+            type: "POST",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + accessToken
+            }
+        });
     }
 
 } 
