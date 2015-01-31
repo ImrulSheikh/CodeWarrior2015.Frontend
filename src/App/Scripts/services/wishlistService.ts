@@ -4,7 +4,7 @@
         return $.ajax(url, {
             type: "GET",
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Origin": "*",
                 "Authorization": "Bearer " + accessToken
             }
         });
@@ -15,7 +15,7 @@
         return $.ajax(url, {
             type: "POST",
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Origin": "*",
                 "Authorization": "Bearer " + accessToken
             }
         });
@@ -26,7 +26,7 @@
         return $.ajax(url, {
             type: "POST",
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Origin": "*",
                 "Authorization": "Bearer " + accessToken
             }
         });
