@@ -101,8 +101,8 @@ module Controllers {
                     });
                 }
 
-                console.log('attr');
-                console.log(pub.properties[0]);
+                //console.log('attr');
+                //console.log(pub.properties[0]);
 
 
             }).fail(function (response) {
