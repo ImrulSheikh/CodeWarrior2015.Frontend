@@ -90,7 +90,7 @@ module Controllers {
                 jQuery('#account-id').show();
                 jQuery('#add-product-id').show();
             } else {
-                this.$location.path('/home');
+                //this.$location.path('/home');
                 jQuery('#add-product-id').hide();
             }
         }
