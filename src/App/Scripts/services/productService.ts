@@ -18,4 +18,9 @@
         var getUrl = new Constant().apiRoot + "/api/Products/GetRecommended";
         return $.get(getUrl);
     }
+
+    public getProductBySearchKey(searchKey) {
+        var getUrl = new Constant().apiRoot + "/api/Products/BySearchKey/"+searchKey;
+        return $.post(getUrl);
+    }
 } 
