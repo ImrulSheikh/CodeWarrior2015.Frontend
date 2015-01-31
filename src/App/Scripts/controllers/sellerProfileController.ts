@@ -10,12 +10,12 @@ module Controllers {
         private productId;
         private sellerInfoList: Array<Object>;
 
-        constructor($scope, $rootScope, $routeParams, $localStorage, $location) {
+        constructor($scope, $rootScope, $localStorage, $location, $routeParams) {
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.$location = $location;
-            this.productId = $routeParams.Id;
+            this.productId = $routeParams.id;
             console.log(this.productId);
             this.init();
         }
@@ -28,7 +28,7 @@ module Controllers {
 
         private GetSellerProfile() {
             var pub = this;
-            this.accountService.getSellerProfile(this.$localStorage.userName).done(function (response) {
+            this.accountService.getSellerProfile(this.productId).done(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
                     pub.sellerInfoList = response;

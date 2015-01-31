@@ -10,6 +10,7 @@
 
         <div class="step-one">
             <h2 class="heading">Enter your product information here</h2>
+            <h4 style="color:#d2691e" ng-bind="vm.productAddMessage"></h4>
         </div>
 
         <div class="shopper-informations">
@@ -18,49 +19,43 @@
                     <div class="shopper-info">
                         <p>Product Information</p>
                         <form>
-                            <input type="text" placeholder="Name">
-                            <input type="number" placeholder="Price"> <span>৳</span>
-                            <input type="number" placeholder="Quantity">
-                        </form>
+                            <input ng-model="vm.productName" type="text" placeholder="Name">
+                            <input ng-model="vm.productPrice" type="number" placeholder="Price"> <!--<span>৳</span>-->
+                            <input ng-model="vm.productDiscount" type="number" placeholder="Discount"> 
+                            <input ng-model="vm.productQuantity" type="number" placeholder="Quantity">
+                        </form> 
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="order-message">
                         <p>Description</p>
-                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+                        <textarea ng-model="vm.productDescription" name="message" placeholder="Notes about your product"></textarea>
                     </div>
                 </div>
-                <div class="col-sm-5 clearfix">
+                <div class="col-sm-3 clearfix">
                     <div class="bill-to">
                         <div class="form-two">
                             <form>
                                 <p>Category</p>
-                                <select>
-                                    <option>-- Country --</option>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
+                                <select ng-model="vm.selectedCategoryId" ng-change="vm.GetSubCategories()">
+                                    <option ng-repeat=" cat in vm.categories" value="{{cat.Id}}">{{cat.Name}}</option>
                                 </select>
                                 <p>Sub Category</p>
-                                <select>
-                                    <option>-- State / Province / Region --</option>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
+                                <select ng-model="vm.selectedSubCategoryId">
+                                    <option ng-repeat=" subCat in vm.subCategories" value="{{subCat.Id}}">{{subCat.Name}}</option>
                                 </select>
                             </form>
+                            <input ng-click="vm.AddProduct()" type="button" class="btn btn-warning" value="Upload" style="margin-top: 5px;" />
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-3">
+                    <form id="imageData">
+                        <input id="access-token" type="hidden" value="{{vm.accessToken}}" />
+                        <span style="margin-bottom: 10px;">Select Image(s) to upload (max 3) :</span>
+                        <input id="file1" name="file" type="file" multiple="multiple" />
+                        <input onclick="uploadImage.upload()" type="button" class="btn btn-warning" value="Upload" style="margin-top: 5px;"/>
+                    </form>
                 </div>
             </div>
         </div>

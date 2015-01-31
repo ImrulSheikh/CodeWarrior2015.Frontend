@@ -58,11 +58,11 @@
                             <p><b>Available Quantity:</b> {{vm.product.NumberOfUnits}}</p>
                             <p><b>Condition:</b> Well</p>
                             <p ng-bind="vm.product.Description"></p>
-                            <button type="button" class="btn btn-default cart" style="margin-left: 0;" ng-click="vm.AddToWishlist(vm.product.Id)">
+                            <button type="button" class="btn btn-default cart" style="margin-left: 0; {{vm .isWishList}}" ng-click="vm.AddToWishlist(vm.product.Id)">
                                 <i class="fa fa-arrow-circle-down"></i>
                                 Add to wishlist
                             </button>
-                            <a class="btn btn-default cart" style="margin-left: 0;" href="#/seller/{{vm.product.Id}}">
+                            <a class="btn btn-default cart" style="margin-left: 0;" href="#/seller/{{vm.product.PostedUserName}}">
                                 <i class="fa fa-user"></i>
                                 View Seller
                             </a>
@@ -85,16 +85,25 @@
                                     <p>{{cmnt.Comment}}</p>
                                 </div>
                                 <div style="{{vm.isReview}}">
-
+                                    
                                     <p><b>Write Your Review</b></p>
-
+                                    <span style="color: #d2691e;" ng-bind="vm.commentMessage"></span>
                                     <form>
-                                        <span>
+                                        <!--<span>
                                             <input type="text" placeholder="Your Name" />
                                             <input type="email" placeholder="Email Address" />
-                                        </span>
-                                        <textarea name=""></textarea>
-                                        <button type="button" class="btn btn-default pull-right">
+                                        </span>-->
+                                        <textarea ng-model="vm.newComments" name=""></textarea>
+                                        <p><b>Rating: </b></p>
+                                        <select ng-model="vm.starRating" style="width: 100px;">
+                                            <option selected="selected">0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <button ng-click="vm.SaveComment()" type="button" class="btn btn-default pull-right">
                                             Submit
                                         </button>
                                     </form>

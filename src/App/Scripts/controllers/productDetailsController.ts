@@ -9,13 +9,18 @@ module Controllers {
         private $location;
         private buyerInfoMessage = '';
         private categoryInfoMessage = '';
+        private commentMessage = '';
         private productId;
         private isReview = '';
+        private isWishList = '';
         private product: Object;
         private buyInfoList: Array<Object>;
         private categories: Array<Object>;
         private comments: Array<Object>;
         private commentsCount;
+
+        private newComments;
+        private starRating;
 
         constructor($scope, $rootScope, $localStorage, $location, $routeParams) {
             $scope.vm = this;
@@ -27,10 +32,7 @@ module Controllers {
             if ($routeParams.isReview == 'false')
             {
                 this.isReview = 'display: none';
-                console.log('v' + this.isReview);
             }     
-            else 
-                console.log('b' + false);
             this.init();
         }
 
@@ -97,6 +99,48 @@ module Controllers {
             });
         }
 
+        public SaveComment()
+        {
+            if (!this.ValidateComment())
+                return;
+
+            var pub = this;
+            var data = {
+                "ProductId": this.productId,
+                "Comment": this.newComments,
+                "StarRating": this.starRating,
+                "HelpfulHits": '0'
+            };
+
+            this.commentMessage = '';
+
+            this.prooductService.saveComment(data, this.$localStorage.accessToken).done(function (response) {
+                console.log(response);
+                pub.$scope.$apply(function () {
+                    pub.commentMessage = 'Saved successfully';
+                    pub.GetComments();
+                });
+            }).fail(function (response) {
+                pub.$scope.$apply(function () {
+                    console.log(response);
+                    pub.commentMessage = 'Error while saving profile information';
+                });
+            });
+        }
+
+        private ValidateComment()
+        {
+            if (!this.newComments) {
+                this.commentMessage = 'Please write comment first';
+                return false;
+            }
+            if (!this.starRating) {
+                this.commentMessage = 'Please give rating';
+                return false;
+            }
+            return true;
+        }
+
         public AddToWishlist(id)
         {
         }
@@ -109,10 +153,14 @@ module Controllers {
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
                 jQuery('#add-product-id').show();
+                this.isWishList = '';
             } else {
                 //this.$location.path('/home');
                 jQuery('#add-product-id').hide();
+                this.isWishList = 'display: none';
             }
+
+            console.log(this.isWishList);
         }
     }
 } 

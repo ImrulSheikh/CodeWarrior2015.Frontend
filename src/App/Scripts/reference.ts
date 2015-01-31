@@ -21,6 +21,8 @@
 /// <reference path="controllers/sellerProfileController.ts" />
 /// <reference path="controllers/addProductController.ts" />
 /// <reference path="controllers/productDetailsController.ts" />
+/// <reference path="controllers/wishlistController.ts" />
+/// <reference path="controllers/addProductController.ts" />
 /// <reference path="directives/testme.ts" />
 
 /// <reference path="services/global.ts" />
@@ -28,6 +30,7 @@
 /// <reference path="services/accountService.ts" />
 /// <reference path="services/categoryService.ts" />
 /// <reference path="services/productService.ts" />
+/// <reference path="services/wishlistService.ts" />
 
 
 /// <reference path="controllers/controllers.ts" />

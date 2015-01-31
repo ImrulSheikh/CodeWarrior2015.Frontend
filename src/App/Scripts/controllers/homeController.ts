@@ -62,6 +62,7 @@ module Controllers {
                 jQuery('#user-id').hide();
                 jQuery('#account-id').hide();
                 jQuery('#add-product-id').hide();
+                jQuery('#wishlist-id').hide();
             }
         }
 

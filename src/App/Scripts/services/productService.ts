@@ -10,7 +10,8 @@
     }
 
     public getCommentsById(id) {
-        var getUrl = new Constant().apiRoot + "/api/Comments/Get?product=" + id;
+        //var getUrl = new Constant().apiRoot + "/api/Comments/Get?product=" + id;
+        var getUrl = new Constant().apiRoot + "/api/Products/GetProductReviews?productId=" + id;
         return $.get(getUrl);
     }
 
@@ -19,6 +20,32 @@
         return $.get(getUrl);
     }
 
+    public saveComment(data, accessToken) {
+        var getUrl = new Constant().apiRoot + "/api/Comments/Save";
+        return $.ajax(getUrl, {
+            type: "POST",
+            //contentType: "application/json;charset=utf-8",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + accessToken
+            },
+            data: data
+        });
+    }
+
+    public saveProduct(data, accessToken) {
+        var getUrl = new Constant().apiRoot + "/api/Products/AddProduct";
+        return $.ajax(getUrl, {
+            type: "POST",
+            //contentType: "application/json;charset=utf-8",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + accessToken
+            },
+            data: data
+        });
+	}
+		
     public getProductBySearchKey(searchKey) {
         var getUrl = new Constant().apiRoot + "/api/Products/BySearchKey/"+searchKey;
         return $.post(getUrl);
