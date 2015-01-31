@@ -15,10 +15,12 @@
         var getUrl = new Constant().apiRoot + "/api/Account/UserProfile";
         return $.ajax(getUrl, {
             type: "POST",
+            //contentType: "application/json;charset=utf-8",
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Authorization": "Bearer " + accessToken
-            }
+            },
+            data : data
         });
     }
 
