@@ -1,0 +1,34 @@
+﻿<div class="col-sm-9">
+    <div class="table-responsive cart_info">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="cart_menu">
+                    <td class="description">Category</td>
+                    <td class="description">Name</td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="buyInfo in vm.buyInfoList">
+                    <td class="cart_description" style="width: 40%;">
+                        <h4>{{buyInfo.CategoryName}}</h4>
+                    </td>
+                    <td class="cart_description" style="width: 40%;">
+                        <h4><a href="#">{{buyInfo.Name}}</a></h4>
+                    </td>
+                    <td class="cart_price" style="width: 10%;">
+                        <p>৳ {{buyInfo.Price}}</p>
+                    </td>
+                    <td class="cart_quantity" style="width: 10%;">
+                        <div class="cart_quantity_button">
+                            <p>{{buyInfo.NumberOfUnits}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -10,6 +10,7 @@ angular.module('codeWarriorApp', ['codeWarriorApp.controllers', 'codeWarriorApp.
             when('/seller', { templateUrl: 'App/Templates/sellerProfile.html', controller: 'SellerProfileController' }).
             when('/addProduct', { templateUrl: 'App/Templates/addProduct.html', controller: 'SellerProfileController' }).
             when('/productDetails/:id', { templateUrl: 'App/Templates/productDetails.html', controller: 'ProductDetailsController' }).
+            when('/wishlist', { templateUrl: 'App/Templates/wishlist.html', controller: 'WishlistController' }).
             otherwise({ redirectTo: '/home' });
         //$locationProvider.html5Mode(true);
     }]);
