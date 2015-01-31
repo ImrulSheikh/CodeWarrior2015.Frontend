@@ -55,7 +55,7 @@ module Controllers {
                 pub.message = 'Error ' + response;
                 });
 
-            //window.location.reload();
+            window.location.reload();
         }
 
        

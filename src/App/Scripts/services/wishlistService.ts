@@ -11,7 +11,7 @@
     }
 
     public addToWishlist(id, accessToken) {
-        var url = new Constant().apiRoot + "/api/Wishlist/Add/?productId=" + id;
+        var url = new Constant().apiRoot + "/api/Wishlist/Add/" + id;
         return $.ajax(url, {
             type: "POST",
             headers: {
