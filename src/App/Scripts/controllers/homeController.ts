@@ -54,6 +54,7 @@ module Controllers {
                 jQuery('#user-id').show();
                 jQuery('#account-id').show();
                 jQuery('#add-product-id').show();
+                jQuery('#wishlist-id').show();
                 jQuery('#user-id a').text(this.$localStorage.userName);
             } else {
                 jQuery('#login-id').show();
