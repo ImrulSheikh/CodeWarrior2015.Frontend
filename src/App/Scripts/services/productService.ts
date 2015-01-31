@@ -44,5 +44,10 @@
             },
             data: data
         });
+	}
+		
+    public getProductBySearchKey(searchKey) {
+        var getUrl = new Constant().apiRoot + "/api/Products/BySearchKey/"+searchKey;
+        return $.post(getUrl);
     }
 } 

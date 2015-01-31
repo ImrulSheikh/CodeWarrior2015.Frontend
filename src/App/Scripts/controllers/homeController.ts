@@ -17,7 +17,12 @@ module Controllers {
         private properties: Array<Object>;
 
 
+
         private recommendedProducts: Array<Object>;
+
+        //private searchKeyProducts: Array<Object>;
+
+        private searchKey;
 
        
         constructor($scope, $rootScope, $localStorage, $routeParams) {
@@ -155,6 +160,26 @@ module Controllers {
 
                 }
                 console.log(pub.recommendedProducts[0]);
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
+        }
+
+        public getProductBySearchKey() {
+
+            var pub = this;
+
+            this.productServicve.getProductBySearchKey(this.searchKey).done(function (response) {
+
+                pub.products = new Array<Object>();
+                for (var i = 0; i < response.length; i++) {
+                    pub.$scope.$apply(function () {
+                        pub.products.push(response[i]);
+                    });
+
+                }
+                console.log(pub.products[0]);
 
             }).fail(function (response) {
                 console.log('Error: ' + response);
