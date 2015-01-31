@@ -67,6 +67,11 @@ module Controllers {
 
 
         public callProductService(catId) {
+            if (catId == -1)
+            {
+                catId = 2
+            }
+               
             var pub = this;
             
             this.productServicve.getProducts(catId).done(function (response) {
