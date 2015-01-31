@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                        <li><a href="javascript:void();" ng-click="vm.callWishlistService(product.Id);"><i class=" fa fa-plus-square"></i>Add to wishlist</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -106,40 +106,15 @@
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" ng-repeat="product in vm.recommendedProducts">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="/App/Styles/Images/samsung-s5.png" alt="" />
-                                                    <h2>৳65000</h2>
-                                                    <p>Samsung Galaxy S5</p>
+                                                    <img src="{{product.ImagePaths[0]}}" alt="" />
+                                                    <h2>{{product.Prices}}</h2>
+                                                    <p>{{product.Name}}</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="/App/Styles/Images/toyota.png" alt="" />
-                                                    <h2>৳600000</h2>
-                                                    <p>Toyota 5200</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="/App/Styles/Images/lumia-925.jpg" alt="" />
-                                                    <h2>৳55000</h2>
-                                                    <p>Nokia Lumia 925</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <a href="javascript:void();" ng-click="vm.callWishlistService(product.Id);"><i class=" fa fa-plus-square"></i>Add to wishlist</a>
                                                 </div>
 
                                             </div>

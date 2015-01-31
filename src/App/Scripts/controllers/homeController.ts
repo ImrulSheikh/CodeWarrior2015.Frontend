@@ -6,6 +6,7 @@ module Controllers {
     export class HomeController {
         private categoryServicve = new CategoryService();
         private productServicve = new ProductService();
+        private wishlistService = new WishlistService();
 
         private $localStorage;
         private $scope;
@@ -15,7 +16,12 @@ module Controllers {
 
         private properties: Array<Object>;
 
+
+        private recommendedProducts: Array<Object>;
+
+       
         constructor($scope, $rootScope, $localStorage, $routeParams) {
+
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
@@ -33,6 +39,7 @@ module Controllers {
             this.checkLoginStatus();
             this.callCategoryService();
             this.callProductService(-1);
+            this.callRecommendedItems();
         }
 
         private checkLoginStatus() {
@@ -63,7 +70,7 @@ module Controllers {
                     });
                 }
 
-                console.log(pub.categories[0]);
+                //console.log(pub.categories[0]);
 
 
             }).fail(function (response) {
@@ -115,6 +122,37 @@ module Controllers {
                 //console.log('attr');
                 //console.log(pub.properties[0]);
 
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
+        }
+
+        public callWishlistService(id) {
+            var pub = this;
+            this.wishlistService.addToWishlist(id, this.$localStorage.accessToken).done(function (response) {
+
+                alert(response);
+
+            }).fail(function (response) {
+                console.log('Error: ' + response);
+            });
+        }
+
+        public callRecommendedItems() {
+           
+            var pub = this;
+
+            this.productServicve.getRecommendedProduct().done(function (response) {
+
+                pub.recommendedProducts = new Array<Object>();
+                for (var i = 0; i < response.length; i++) {
+                    pub.$scope.$apply(function () {
+                        pub.recommendedProducts.push(response[i]);
+                    });
+
+                }
+                console.log(pub.recommendedProducts[0]);
 
             }).fail(function (response) {
                 console.log('Error: ' + response);

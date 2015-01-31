@@ -13,4 +13,9 @@
         var getUrl = new Constant().apiRoot + "/api/Comments/Get?product=" + id;
         return $.get(getUrl);
     }
+
+    public getRecommendedProduct() {
+        var getUrl = new Constant().apiRoot + "/api/Products/GetRecommended";
+        return $.get(getUrl);
+    }
 } 
