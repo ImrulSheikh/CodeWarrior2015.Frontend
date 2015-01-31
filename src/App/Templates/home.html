@@ -1,7 +1,7 @@
 ﻿<div>
     <section>
         <div class="container">
-            <div class="ims_search" style="width:400px;" ng-keydown="vm.getProductBySearchKey();">
+            <div class="ims_search" ng-keydown="vm.getProductBySearchKey();">
                 <input ng-model="vm.searchKey" class="skey" type="text" value="" placeholder="Enter Search Key" />
             </div>
             
@@ -155,10 +155,11 @@
 
     .ims_search {
         margin:10px;
+        padding-bottom:20px;
     }
 
         .ims_search input.skey {
-            width: 600px;
+            width: 90%;
             height: 50px;
             padding: 10px;
         }
