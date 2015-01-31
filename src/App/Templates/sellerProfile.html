@@ -12,22 +12,22 @@
             <table class="table">
                 <tr>
                     <td>
-                        <h4>Name: {{vm.sellerInfoList.User.FullName}}</h4>
+                        <h4><b>Name:</b> {{vm.sellerInfoList.User.FullName}}</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4>Address: {{vm.sellerInfoList.User.Address}}</h4>
+                        <h4><b>Address:</b> {{vm.sellerInfoList.User.Address}}</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4>Mobile: {{vm.sellerInfoList.User.PhoneNumber}}</h4>
+                        <h4><b>Mobile:</b> {{vm.sellerInfoList.User.PhoneNumber}}</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4>Rating: {{vm.sellerInfoList.Rating}}</h4>
+                        <h4 style="color:#32cd32"><b>Rating:</b> {{vm.sellerInfoList.Rating}}</h4>
                     </td>
                 </tr>
             </table>
@@ -45,7 +45,7 @@
                 <tbody>
                     <tr ng-repeat="sellInfo in vm.sellerInfoList.Products">
                         <td class="cart_description" style="width: 30%;">
-                            <h4>{{sellInfo.Name}}</h4>
+                            <h4><a style="color: #d2691e;" ng-href="#/productDetails/{{sellInfo.Id}}/false">{{sellInfo.Name}}</a></h4>
                         </td>
                         <td class="cart_description" style="width: 50%;">
                             <img style="width: 200px; height: 180px;" src="{{sellInfo.ImagePaths[0]}}" alt="" />
