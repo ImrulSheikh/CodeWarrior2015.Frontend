@@ -7,13 +7,16 @@ module Controllers {
         private $scope;
         private $localStorage;
         private $location;
+        private productId;
         private sellerInfoList: Array<Object>;
 
-        constructor($scope, $rootScope, $localStorage, $location) {
+        constructor($scope, $rootScope, $routeParams, $localStorage, $location) {
             $scope.vm = this;
             this.$scope = $scope;
             this.$localStorage = $localStorage;
             this.$location = $location;
+            this.productId = $routeParams.Id;
+            console.log(this.productId);
             this.init();
         }
 
@@ -28,20 +31,12 @@ module Controllers {
             this.accountService.getSellerProfile(this.$localStorage.userName).done(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
-                    if (response.length == 0) {
-                        pub.sellerInfoMessage = 'No buying product found';
-                    }
-                    else {
-                        pub.sellerInfoList = new Array<Object>();
-                        for (var i = 0; i < response.length; i++) {
-                            pub.sellerInfoList.push(response[i]);
-                        }
-                    }
+                    pub.sellerInfoList = response;
                 });
             }).fail(function (response) {
                 console.log(response);
                 pub.$scope.$apply(function () {
-                    pub.sellerInfoMessage = 'Error while getting buying information';
+                    pub.sellerInfoMessage = 'Error while getting seller information';
                 });
             });
         }

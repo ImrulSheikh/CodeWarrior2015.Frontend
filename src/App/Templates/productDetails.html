@@ -62,6 +62,10 @@
                                 <i class="fa fa-arrow-circle-down"></i>
                                 Add to wishlist
                             </button>
+                            <a class="btn btn-default cart" style="margin-left: 0;" href="#/seller/{{vm.product.Id}}">
+                                <i class="fa fa-user"></i>
+                                View Seller
+                            </a>
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
@@ -80,19 +84,21 @@
                                     <p><b>Rating: </b>{{cmnt.StarRating}} stars</p>
                                     <p>{{cmnt.Comment}}</p>
                                 </div>
-                                
-                                <p><b>Write Your Review</b></p>
+                                <div style="{{vm.isReview}}">
 
-                                <form action="#">
-                                    <span>
-                                        <input type="text" placeholder="Your Name" />
-                                        <input type="email" placeholder="Email Address" />
-                                    </span>
-                                    <textarea name=""></textarea>
-                                    <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
-                                </form>
+                                    <p><b>Write Your Review</b></p>
+
+                                    <form>
+                                        <span>
+                                            <input type="text" placeholder="Your Name" />
+                                            <input type="email" placeholder="Email Address" />
+                                        </span>
+                                        <textarea name=""></textarea>
+                                        <button type="button" class="btn btn-default pull-right">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div><!--/category-tab-->

@@ -31,7 +31,7 @@
     }
 
     public getSellerProfile(userName) {
-        var getUrl = new Constant().apiRoot + "/api/Profiles/GetSellerProfile/" + userName;
+        var getUrl = new Constant().apiRoot + "/api/Profiles/GetSellerProfile/tanjeer369";// + userName;
 
         return $.get(getUrl);
     }
